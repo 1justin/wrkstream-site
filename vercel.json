@@ -1,6 +1,6 @@
 {
   "buildCommand": null,
-  "outputDirectory": "public",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -14,13 +14,13 @@
       ]
     },
     {
-      "source": "/logos/(.*)",
+      "source": "/(.*)\\.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/images/(.*)",
+      "source": "/(.*)\\.jpg",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=2592000" }
       ]
