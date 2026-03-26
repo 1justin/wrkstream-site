@@ -540,6 +540,315 @@
 
       <p>The chef is the person who knows which of these approaches solves your specific operational problem, how to architect them together, how to integrate them with your existing stack, and how to build it in a way that doesn't collapse the first time something unexpected happens.</p>
 
+    <div class="visual-embed" style="margin: 3rem -2rem; border-radius: 12px; overflow: hidden; border: 1px solid #e5e4e0;">
+      <iframe srcdoc="<!DOCTYPE html><html><head><meta charset=&quot;UTF-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;><title>What's Under the AI Umbrella</title><style>  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #FAFAF8;
+    color: #1A1A18;
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 860px;
+    width: 100%;
+  }
+
+  .headline {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .headline h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #1A1A18;
+  }
+
+  .headline p {
+    font-size: 12px;
+    color: #6B6B68;
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .umbrella-bar {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .umbrella-bar span {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9A9A96;
+    padding: 5px 24px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    background: rgba(0,0,0,0.02);
+  }
+
+  /* Connector bracket */
+  .bracket {
+    margin: 0 auto;
+    width: 90%;
+    height: 20px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .stem {
+    width: 1px;
+    height: 12px;
+    background: rgba(0,0,0,0.1);
+    margin: 0 auto;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .card {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 5px;
+    padding: 18px 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+
+  /* Color accents for each card */
+  .card:nth-child(1)::before { background: rgba(180,140,70,0.4); }
+  .card:nth-child(2)::before { background: rgba(45,106,79,0.4); }
+  .card:nth-child(3)::before { background: rgba(74,111,165,0.4); }
+  .card:nth-child(4)::before { background: rgba(176,94,60,0.4); }
+  .card:nth-child(5)::before { background: rgba(123,94,167,0.4); }
+  .card:nth-child(6)::before { background: rgba(140,130,80,0.4); }
+  .card:nth-child(7)::before { background: rgba(58,139,139,0.4); }
+  .card:nth-child(8)::before { background: rgba(165,100,100,0.4); }
+
+  .card:hover {
+    border-color: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+  }
+
+  .card-type {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+
+  .card:nth-child(1) .card-type { color: #8B6E4E; }
+  .card:nth-child(2) .card-type { color: #2D6A4F; }
+  .card:nth-child(3) .card-type { color: #4A6FA5; }
+  .card:nth-child(4) .card-type { color: #B05E3C; }
+  .card:nth-child(5) .card-type { color: #7B5EA7; }
+  .card:nth-child(6) .card-type { color: #6B6530; }
+  .card:nth-child(7) .card-type { color: #2E7A7A; }
+  .card:nth-child(8) .card-type { color: #A06464; }
+
+  .card-full {
+    font-size: 9px;
+    color: #9A9A96;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card-desc {
+    font-size: 11px;
+    color: #4A4A48;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .card-use {
+    font-size: 10px;
+    color: #6B6B68;
+    line-height: 1.5;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .card-use strong {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9A9A96;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* Bottom callout */
+  .callout {
+    margin-top: 24px;
+    text-align: center;
+    padding: 20px 28px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 4px;
+    background: rgba(0,0,0,0.02);
+  }
+
+  .callout p {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #4A4A48;
+    line-height: 1.6;
+  }
+
+  .callout .punchline {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    color: #2D6A4F;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: block;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 11px;
+    color: #B0B0AC;
+  }</style></head><body>  <div class=&quot;container&quot;>
+    <div class=&quot;headline&quot;>
+      <h2>&quot;We need AI&quot; is about as useful as &quot;we need food.&quot;</h2>
+      <p>Here's what's actually on the menu</p>
+    </div>
+
+    <div class=&quot;umbrella-bar&quot;>
+      <span>When someone says &quot;AI,&quot; they could mean any of these. Most don't know the difference.</span>
+    </div>
+
+    <div class=&quot;bracket&quot;></div>
+    <div class=&quot;stem&quot;></div>
+
+    <div class=&quot;cards&quot;>
+      <!-- Row 1 -->
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>LLMs</div>
+        <div class=&quot;card-full&quot;>Large Language Models</div>
+        <div class=&quot;card-desc&quot;>Generate text, analyze documents, draft content. What most people picture when they hear &quot;AI.&quot;</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Summarize a 50-page contract in 30 seconds
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>Machine Learning</div>
+        <div class=&quot;card-full&quot;>Predictive Models</div>
+        <div class=&quot;card-desc&quot;>Train models on your data to predict outcomes. The quiet workhorse running behind the scenes for a decade.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Flag fraudulent transactions before they clear
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>RAG</div>
+        <div class=&quot;card-full&quot;>Retrieval-Augmented Generation</div>
+        <div class=&quot;card-desc&quot;>Connects AI to your actual data. Answers grounded in your documents, not hallucinations.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Ask questions about your internal policies and get real answers
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>Agentic AI</div>
+        <div class=&quot;card-full&quot;>Autonomous Agents</div>
+        <div class=&quot;card-desc&quot;>Systems that act, not just respond. Multi-step workflows, research, execution with approval loops.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Research 50 leads, draft personalized outreach, schedule follow-ups
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>Computer Vision</div>
+        <div class=&quot;card-full&quot;>Image + Video Analysis</div>
+        <div class=&quot;card-desc&quot;>Machines that see. Identify objects, read documents, inspect quality, monitor environments.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Detect product defects on a manufacturing line in real time
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>NLP</div>
+        <div class=&quot;card-full&quot;>Natural Language Processing</div>
+        <div class=&quot;card-desc&quot;>Understand human language at scale. Sentiment, intent, classification, translation, extraction.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Route 10,000 support tickets by urgency and topic automatically
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>Multimodal AI</div>
+        <div class=&quot;card-full&quot;>Cross-Format Intelligence</div>
+        <div class=&quot;card-desc&quot;>Process text, images, audio, and video together. Reason across formats, not just one at a time.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Analyze a video call for sentiment, topics, and action items simultaneously
+        </div>
+      </div>
+
+      <div class=&quot;card&quot;>
+        <div class=&quot;card-type&quot;>Predictive Analytics</div>
+        <div class=&quot;card-full&quot;>Forecasting + Optimization</div>
+        <div class=&quot;card-desc&quot;>Use historical data to forecast demand, pricing, churn, and resource needs before they happen.</div>
+        <div class=&quot;card-use&quot;>
+          <strong>Example</strong>
+          Predict which customers will churn 90 days before they do
+        </div>
+      </div>
+    </div>
+
+    <div class=&quot;callout&quot;>
+      <p>You don't need to build any of these. You need to know enough about them to ask the right questions, evaluate what vendors are selling you, and make decisions that don't waste six figures on the wrong approach.</p>
+      <span class=&quot;punchline&quot;>That's literacy. That's the risotto. The chef knows which ones to combine for your kitchen.</span>
+    </div>
+
+    <div class=&quot;footer-note&quot;>wrkstream.com</div>
+  </div></body></html>" style="width: 100%; height: 650px; border: none; border-radius: 12px;" scrolling="no"></iframe>
+    </div>
+
+
+
       <h2>Why This Matters for Your Business</h2>
 
       <p>Here's what I've seen go wrong, over and over:</p>
@@ -553,6 +862,296 @@
       <p>In every case, the problem wasn't the tool. It was the gap between knowing enough to be dangerous and knowing enough to be effective.</p>
 
       <p>The fix isn't "don't learn to cook." The fix is: learn to cook AND know when to call the chef.</p>
+
+    <div class="visual-embed" style="margin: 3rem -2rem; border-radius: 12px; overflow: hidden; border: 1px solid #e5e4e0;">
+      <iframe srcdoc="<!DOCTYPE html><html><head><meta charset=&quot;UTF-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;><title>WRKSTREAM — Where We Sit</title><style>  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #FAFAF8;
+    color: #1A1A18;
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    width: 720px;
+    height: 720px;
+  }
+
+  .headline {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .headline h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #1A1A18;
+  }
+
+  .headline p {
+    font-size: 13px;
+    color: #6B6B68;
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .venn-area {
+    position: relative;
+    width: 720px;
+    height: 600px;
+    margin-top: 16px;
+  }
+
+  .circle {
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .circle:hover {
+    transform: scale(1.02);
+  }
+
+  .circle-comm {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 50% 35%, rgba(180, 140, 70, 0.22) 0%, rgba(180, 140, 70, 0.04) 70%);
+    border: 1px solid rgba(180, 140, 70, 0.3);
+  }
+  .circle-comm:hover { transform: translateX(-50%) scale(1.02); }
+
+  .circle-design {
+    top: 210px;
+    left: 30px;
+    background: radial-gradient(circle at 50% 35%, rgba(45, 106, 79, 0.22) 0%, rgba(45, 106, 79, 0.04) 70%);
+    border: 1px solid rgba(45, 106, 79, 0.3);
+  }
+
+  .circle-eng {
+    top: 210px;
+    right: 30px;
+    background: radial-gradient(circle at 50% 35%, rgba(74, 111, 165, 0.22) 0%, rgba(74, 111, 165, 0.04) 70%);
+    border: 1px solid rgba(74, 111, 165, 0.3);
+  }
+
+  /* Labels positioned in the open areas of each circle */
+  .label-group {
+    position: absolute;
+    text-align: center;
+  }
+
+  .label-comm {
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .label-design {
+    top: 380px;
+    left: 55px;
+  }
+
+  .label-eng {
+    top: 380px;
+    right: 55px;
+    text-align: center;
+  }
+
+  .circle-label {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .label-comm .circle-label { color: rgba(160, 120, 50, 0.9); }
+  .label-design .circle-label { color: rgba(45, 106, 79, 0.9); }
+  .label-eng .circle-label { color: rgba(74, 111, 165, 0.9); }
+
+  .circle-sub {
+    font-size: 11px;
+    color: #6B6B68;
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+
+  /* CENTER: the main event */
+  .center-zone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+    z-index: 10;
+    text-align: center;
+    width: 200px;
+  }
+
+  /* Glowing background for center */
+  .center-glow-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 106, 79, 0.2) 0%, rgba(45, 106, 79, 0.05) 50%, transparent 70%);
+    animation: pulseOuter 5s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .center-glow-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 106, 79, 0.12) 0%, transparent 60%);
+    animation: pulseInner 3s ease-in-out infinite;
+    z-index: 3;
+  }
+
+  @keyframes pulseOuter {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -28%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -28%) scale(1.15); }
+  }
+
+  @keyframes pulseInner {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -28%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -28%) scale(1.1); }
+  }
+
+  /* Center ring */
+  .center-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 1px solid rgba(45, 106, 79, 0.3);
+    z-index: 4;
+  }
+
+  .center-zone .wrkstream-mark {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: #1A1A18;
+    text-transform: uppercase;
+  }
+
+  .center-zone .sits-here {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #2D6A4F;
+    margin-top: 3px;
+  }
+
+  .center-zone .sits-desc {
+    font-size: 10px;
+    color: #6B6B68;
+    margin-top: 8px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  /* Intersection labels */
+  .intersection {
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+  }
+
+  .intersection span {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9A9A96;
+  }
+
+  .int-cd { top: 230px; left: 180px; }
+  .int-ce { top: 230px; right: 180px; }
+  .int-de { bottom: 85px; left: 50%; transform: translateX(-50%); }
+
+  .footer-note {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #B0B0AC;
+    text-align: center;
+    width: 100%;
+  }</style></head><body>  <div class=&quot;container&quot;>
+    <div class=&quot;headline&quot;>
+      <h2>Most consultants live in one circle. We live in the middle.</h2>
+      <p>Where product decisions are actually made</p>
+    </div>
+
+    <div class=&quot;venn-area&quot;>
+      <div class=&quot;circle circle-comm&quot;></div>
+      <div class=&quot;circle circle-design&quot;></div>
+      <div class=&quot;circle circle-eng&quot;></div>
+
+      <!-- Labels in the open areas -->
+      <div class=&quot;label-group label-comm&quot;>
+        <div class=&quot;circle-label&quot;>Commercialization</div>
+        <div class=&quot;circle-sub&quot;>Go-to-market, revenue models,<br>distribution, positioning</div>
+      </div>
+
+      <div class=&quot;label-group label-design&quot;>
+        <div class=&quot;circle-label&quot;>Design</div>
+        <div class=&quot;circle-sub&quot;>UX, information architecture,<br>adoption, experience</div>
+      </div>
+
+      <div class=&quot;label-group label-eng&quot;>
+        <div class=&quot;circle-label&quot;>Engineering</div>
+        <div class=&quot;circle-sub&quot;>Architecture, AI, infrastructure,<br>scalability, security</div>
+      </div>
+
+      <!-- Intersection labels -->
+      <div class=&quot;intersection int-cd&quot;><span>Brand + UX</span></div>
+      <div class=&quot;intersection int-ce&quot;><span>Product + Tech</span></div>
+      <div class=&quot;intersection int-de&quot;><span>Build + Ship</span></div>
+
+      <!-- Center visual emphasis -->
+      <div class=&quot;center-glow-outer&quot;></div>
+      <div class=&quot;center-glow-inner&quot;></div>
+      <div class=&quot;center-ring&quot;></div>
+
+      <div class=&quot;center-zone&quot;>
+        <div class=&quot;wrkstream-mark&quot;>WRKSTREAM</div>
+        <div class=&quot;sits-here&quot;>lives here</div>
+        <div class=&quot;sits-desc&quot;>Strategy. Design. Engineering.<br>One team. Full picture.</div>
+      </div>
+    </div>
+
+    <div class=&quot;footer-note&quot;>wrkstream.com</div>
+  </div></body></html>" style="width: 100%; height: 750px; border: none; border-radius: 12px;" scrolling="no"></iframe>
+    </div>
+
+
     </div>
 
     <div class="cta-section">
