@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The gap in AI adoption for mid-market companies and why big tech can't fix it.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The $50M Company AI Gap (And Why Big Tech Can't Fix It)">
+  <meta property="og:description" content="The gap in AI adoption for mid-market companies and why big tech can't fix it.">
+  <title>The $50M Company AI Gap (And Why Big Tech Can't Fix It) | WRKSTREAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #FAFAF8;
+      color: #1A1A18;
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navigation */
+    nav#mainNav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(250, 250, 248, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav#mainNav.scrolled {
+      background: rgba(250, 250, 248, 0.95);
+      border-bottom: 1px solid #e5e4e0;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1A1A18;
+      letter-spacing: 2px;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .nav-toggle span {
+      width: 25px;
+      height: 2px;
+      background-color: #1A1A18;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1A1A18;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #2D6A4F;
+    }
+
+    .nav-cta {
+      background-color: #2D6A4F !important;
+      color: #FAFAF8 !important;
+      padding: 0.75rem 1.75rem !important;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem !important;
+    }
+
+    .nav-cta:hover {
+      background-color: #1d4a38 !important;
+      color: #FAFAF8 !important;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(250, 250, 248, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: calc(100vh - 70px);
+      }
+
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+    }
+
+    /* Article container */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      min-height: 100vh;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #2D6A4F;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #1d4a38;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: #2D6A4F;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .article-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: #1A1A18;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .article-meta {
+      color: #6b6b66;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e4e0;
+    }
+
+    .article-body {
+      margin-bottom: 3rem;
+    }
+
+    .article-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      color: #1A1A18;
+      margin: 3rem 0 1.5rem;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1A1A18;
+      margin: 2rem 0 1rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: #1A1A18;
+    }
+
+    .article-body strong {
+      font-weight: 600;
+      color: #1A1A18;
+    }
+
+    .article-body em {
+      font-style: italic;
+      color: #1A1A18;
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 1.5rem 0 1.5rem 2rem;
+      color: #1A1A18;
+    }
+
+    .article-body li {
+      margin-bottom: 0.75rem;
+      line-height: 1.75;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid #2D6A4F;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      color: #6b6b66;
+      font-style: italic;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #e8f5e9 0%, #f5faf5 100%);
+      border: 1px solid #d4edda;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta-section h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
+      color: #1A1A18;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .cta-button {
+      background-color: #2D6A4F;
+      color: #FAFAF8;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #1d4a38;
+    }
+
+    /* More articles section */
+    .more-articles {
+      margin: 4rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e4e0;
+    }
+
+    .more-articles h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e5e4e0;
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      border-color: #2D6A4F;
+      background: #f9faf8;
+    }
+
+    .article-card-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #2D6A4F;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      color: #1A1A18;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .article-card-meta {
+      color: #9c9c97;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .article-container {
+        padding: 7rem 1.5rem 3rem;
+      }
+
+      .article-title {
+        font-size: 2rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.6rem;
+        margin: 2.5rem 0 1.25rem;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section h3 {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #1A1A18;
+      color: #FAFAF8;
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e5e4e0;
+    }
+
+    .footer-left {
+      font-size: 0.9rem;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-right a {
+      color: #FAFAF8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-right a:hover {
+      color: #2D6A4F;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .footer-right {
+        justify-content: center;
+      }
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <a href="/" class="logo">WRKSTREAM</a>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/#workshop">Workshop</a>
+      <a href="/#work">Work</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/#about">About</a>
+      <a href="https://tidycal.com/cjmayer/15-minute-intro" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <div class="article-container">
+    <a href="/blog" class="back-link">← Back to Blog</a>
+
+    <div class="article-category">Blog</div>
+    <h1 class="article-title">The $50M Company AI Gap (And Why Big Tech Can't Fix It)</h1>
+
+    <div class="article-meta">WRKSTREAM • 6 min read</div>
+
+    <div class="article-body">
+      <p>OpenAI, Anthropic, Google, Microsoft, Deloitte, McKinsey. They're all running AI workshops now. And for Fortune 500 companies with dedicated innovation teams, hundred-person IT departments, and seven-figure consulting budgets, those workshops make sense.</p>
+
+      <p>But here's the thing. Most companies aren't Fortune 500.</p>
+
+      <p>If your company does $10M to $250M in revenue, you probably don't have a Chief AI Officer. You might not have a CTO. Your "IT department" might be one person who also manages the phone system. And your budget for AI exploration is whatever's left after payroll.</p>
+
+      <p>You're not behind on AI. You're just in a gap that nobody is building for.</p>
+
+      <h2>The Workshop Problem</h2>
+
+      <p>Most enterprise AI workshops follow the same playbook:</p>
+
+      <p>A consultant presents slides about the future of AI. They show demos (usually a chatbot doing something impressive in a controlled environment). They talk about "use cases" at a level of abstraction that's hard to connect to your actual Tuesday. They leave you with a strategy deck, a list of recommended vendors, and a bill that starts with a comma.</p>
+
+      <p>Your team walks out thinking two things: "that was interesting" and "I still don't know what to do Monday morning."</p>
+
+      <h2>Why Big Tech Workshops Miss the Mid-Market</h2>
+
+      <h3>Their model doesn't scale down.</h3>
+      <p>A McKinsey engagement is designed for organizations that can absorb a $500K consulting fee. A $50M company can't do that.</p>
+
+      <h3>They teach capabilities, not applications.</h3>
+      <p>A CEO doesn't need to understand transformer architecture. They need to know whether AI can reduce the 6 hours their team spends every week on invoice processing.</p>
+
+      <h3>They leave with a deck, not a plan.</h3>
+      <p>Strategy documents have a half-life of about two weeks in a mid-market company. What sticks is a specific project with a defined scope, a realistic timeline, and someone's name on it.</p>
+
+      <h3>They demo chatbots when you need operational tools.</h3>
+      <p>The highest-value AI applications for mid-market companies are operational: automating data entry, generating reports, routing requests, extracting structured data from unstructured documents. Not flashy. Just saves 20 hours a week.</p>
+
+      <h2>What Mid-Market Companies Actually Need</h2>
+
+      <h3>Someone who builds, not just advises.</h3>
+      <p>A builder who can open a laptop and show you something real, built on your actual business problem, in the first hour.</p>
+
+      <h3>Industry context, not generic frameworks.</h3>
+      <p>"Here's how an AI agent can take your field service scheduling from 3 hours of manual coordination to 15 minutes of review" is actionable.</p>
+
+      <h3>A plan that fits your team, not a team that fits the plan.</h3>
+      <p>The person who leads the AI initiative is also running sales, or operations, or finance. The plan needs to account for that.</p>
+
+      <h2>What a WRKSTREAM Workshop Looks Like</h2>
+
+      <p>We don't start with slides. We start with your problems.</p>
+
+      <p>The session opens with a live demo, not of a chatbot, but of a working application built for your industry. Most teams think AI means a chat window. This is the moment they realize the scope is much bigger.</p>
+
+      <p>Your team leaves with a sprint plan. Not a strategy deck. A defined project with a specific challenge, clear scope, realistic timeline, and named owners from your team. Ready to execute Monday morning.</p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to turn AI into operational leverage?</h3>
+      <a href="https://tidycal.com/cjmayer/15-minute-intro" class="cta-button" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+
+    <div class="more-articles">
+      <h3>More from WRKSTREAM</h3>
+      <div class="articles-grid">
+        <a href="/blog/why-companies-overpay-for-software" class="article-card">
+          <div class="article-card-category">Blog</div>
+          <h4 class="article-card-title">Why Mid-Market Companies Overpay for Software</h4>
+          <div class="article-card-meta">6 min read</div>
+        </a>
+        <a href="/blog/just-because-i-can-cook" class="article-card">
+          <div class="article-card-category">Blog</div>
+          <h4 class="article-card-title">Just Because I Can Cook Doesn't Mean I Should Be a Chef</h4>
+          <div class="article-card-meta">8 min read</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 WRKSTREAM LLC</div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/company/wrkstream" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:justin@wrkstream.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const mainNav = document.getElementById('mainNav');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Scroll nav background
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.article-body > h2, .article-body > h3, .article-body > p, .article-body > ul, .article-body > ol, .article-body > blockquote');
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

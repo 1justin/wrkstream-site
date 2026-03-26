@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What a master tailor can teach every business owner about AI readiness and infrastructure.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What a Master Tailor Can Teach Every Business Owner About AI Readiness">
+  <meta property="og:description" content="What a master tailor can teach every business owner about AI readiness and infrastructure.">
+  <title>What a Master Tailor Can Teach Every Business Owner About AI Readiness | WRKSTREAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #FAFAF8;
+      color: #1A1A18;
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navigation */
+    nav#mainNav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(250, 250, 248, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav#mainNav.scrolled {
+      background: rgba(250, 250, 248, 0.95);
+      border-bottom: 1px solid #e5e4e0;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1A1A18;
+      letter-spacing: 2px;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .nav-toggle span {
+      width: 25px;
+      height: 2px;
+      background-color: #1A1A18;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1A1A18;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #2D6A4F;
+    }
+
+    .nav-cta {
+      background-color: #2D6A4F !important;
+      color: #FAFAF8 !important;
+      padding: 0.75rem 1.75rem !important;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem !important;
+    }
+
+    .nav-cta:hover {
+      background-color: #1d4a38 !important;
+      color: #FAFAF8 !important;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(250, 250, 248, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: calc(100vh - 70px);
+      }
+
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+    }
+
+    /* Article container */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      min-height: 100vh;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #2D6A4F;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #1d4a38;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: #2D6A4F;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .article-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: #1A1A18;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .article-meta {
+      color: #6b6b66;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e4e0;
+    }
+
+    .article-body {
+      margin-bottom: 3rem;
+    }
+
+    .article-body h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      color: #1A1A18;
+      margin: 3rem 0 1.5rem;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1A1A18;
+      margin: 2rem 0 1rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: #1A1A18;
+    }
+
+    .article-body strong {
+      font-weight: 600;
+      color: #1A1A18;
+    }
+
+    .article-body em {
+      font-style: italic;
+      color: #1A1A18;
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 1.5rem 0 1.5rem 2rem;
+      color: #1A1A18;
+    }
+
+    .article-body li {
+      margin-bottom: 0.75rem;
+      line-height: 1.75;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid #2D6A4F;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      color: #6b6b66;
+      font-style: italic;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #e8f5e9 0%, #f5faf5 100%);
+      border: 1px solid #d4edda;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta-section h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
+      color: #1A1A18;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .cta-button {
+      background-color: #2D6A4F;
+      color: #FAFAF8;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #1d4a38;
+    }
+
+    /* More articles section */
+    .more-articles {
+      margin: 4rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e4e0;
+    }
+
+    .more-articles h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e5e4e0;
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      border-color: #2D6A4F;
+      background: #f9faf8;
+    }
+
+    .article-card-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #2D6A4F;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      color: #1A1A18;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .article-card-meta {
+      color: #9c9c97;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .article-container {
+        padding: 7rem 1.5rem 3rem;
+      }
+
+      .article-title {
+        font-size: 2rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.6rem;
+        margin: 2.5rem 0 1.25rem;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section h3 {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #1A1A18;
+      color: #FAFAF8;
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e5e4e0;
+    }
+
+    .footer-left {
+      font-size: 0.9rem;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-right a {
+      color: #FAFAF8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-right a:hover {
+      color: #2D6A4F;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .footer-right {
+        justify-content: center;
+      }
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <a href="/" class="logo">WRKSTREAM</a>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/#workshop">Workshop</a>
+      <a href="/#work">Work</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/#about">About</a>
+      <a href="https://tidycal.com/cjmayer/15-minute-intro" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <div class="article-container">
+    <a href="/blog" class="back-link">← Back to Blog</a>
+
+    <div class="article-category">Blog</div>
+    <h1 class="article-title">What a Master Tailor Can Teach Every Business Owner About AI Readiness</h1>
+
+    <div class="article-meta">WRKSTREAM • 7 min read</div>
+
+    <div class="article-body">
+      <p>There's a tailor I know who is exceptional at what he does. His work is precise. His clients are loyal. He's built a reputation over years through craftsmanship that speaks for itself.</p>
+
+      <p>His website looks like it was built in 2016 and hasn't been touched since.</p>
+
+      <p>He's not unusual. He's the norm. And the gap between the quality of his craft and the quality of his business infrastructure is the same gap that exists in thousands of companies right now, from five-person shops to fifty-million-dollar enterprises.</p>
+
+      <p>This isn't a story about a tailor who needs a better website. It's a story about what "AI readiness" actually looks like when you strip away the buzzwords.</p>
+
+      <h2>The Current State</h2>
+
+      <p>Here's what this business looks like today:</p>
+
+      <p>A basic Squarespace-level website with limited functionality. No online booking. No client portal. No way for a returning customer to pull up their measurements, past orders, or preferences without the tailor remembering it personally or digging through notes.</p>
+
+      <p>The business runs on the owner's memory, his phone, and maybe a notebook. Client relationships are strong because he's attentive and skilled, but the entire operation depends on him being present and available for every interaction.</p>
+
+      <p>That's not a technology problem. That's a scale ceiling disguised as a lifestyle.</p>
+
+      <h2>What AI Readiness Actually Means</h2>
+
+      <p>Most people hear "AI" and think chatbots. Or they think it requires a data science team and a six-figure budget. Neither is true for a business like this.</p>
+
+      <p>AI readiness isn't about implementing AI. It's about building the infrastructure that makes AI useful when you're ready for it. And that infrastructure is valuable on its own, even if you never touch an AI tool.</p>
+
+      <p>Here's what a modern version of this tailor's business looks like:</p>
+
+      <h3>A website that works as hard as the owner does.</h3>
+      <p>Not a brochure, a booking engine. Clients schedule consultations online. The calendar syncs. Confirmations go out automatically. The tailor's time is protected and his availability is clear.</p>
+
+      <h3>A client profile system.</h3>
+      <p>Every client has a record: measurements, fabric preferences, past orders, communication history, style notes. Today, the tailor carries this in his head. That works until he's busy, until he hires help, or until a longtime client calls and he can't remember the details of a suit he made three years ago.</p>
+
+      <h3>Automated follow-ups.</h3>
+      <p>A client picks up a finished suit. Two weeks later, they get a message: "How's the fit? Anything need adjusting?" Six months later: "It's been a while, ready for something new?" This isn't spam. It's the kind of attentive service the tailor already provides in person, extended into the moments when he's not in the room.</p>
+
+      <h3>A visual portfolio that sells.</h3>
+      <p>Before-and-after photos. Client testimonials. Style guides. Content that demonstrates the craft to people who haven't walked through the door yet. Most skilled tradespeople are terrible at showing their work online because they're focused on doing the work. But the work they've already done is their best marketing asset.</p>
+
+      <h2>Where AI Fits (And Where It Doesn't)</h2>
+
+      <p>Once that infrastructure exists, AI becomes a multiplier instead of a science project:</p>
+
+      <h3>Style recommendations.</h3>
+      <p>A client's profile includes their past choices, body type, preferred fabrics, and occasions they dress for. An AI layer can suggest new options based on patterns.</p>
+
+      <h3>Smart scheduling.</h3>
+      <p>AI can optimize the calendar based on job complexity, turnaround times, and client history. A first-time consultation needs more time than a repeat client's adjustment. The system learns this.</p>
+
+      <h3>Content generation.</h3>
+      <p>The tailor takes a photo of a finished piece. AI drafts a caption, suggests which platform to post it on, and schedules it. The creative judgment stays with the craftsperson. The logistics disappear.</p>
+
+      <h3>Inventory and supply insights.</h3>
+      <p>Which fabrics are ordered most? What's the average lead time from suppliers? Where are the bottlenecks? These are questions AI can answer in seconds once the data exists, but only if the data is being captured in the first place.</p>
+
+      <p>None of this requires a computer science degree. None of it requires a six-figure investment. It requires someone who understands both the business and the technology landscape well enough to connect the dots.</p>
+
+      <h2>The Bigger Lesson</h2>
+
+      <p>This tailor's situation is a mirror for every business owner who's excellent at their craft but running their operations on manual processes and memory.</p>
+
+      <p>The question isn't "should I use AI?" The question is: "Am I capturing the data and building the systems that will make AI useful when I'm ready?"</p>
+
+      <p>Every client interaction that isn't recorded is a lost data point. Every scheduling decision made by memory instead of system is a scalability bottleneck. Every follow-up that doesn't happen because the owner was busy is a relationship left on the table.</p>
+
+      <p>AI doesn't fix broken infrastructure. It amplifies whatever's already there. If your systems are solid, AI makes them extraordinary. If your systems are manual and fragmented, AI has nothing to work with.</p>
+
+      <h2>The Five-Question AI Readiness Check</h2>
+
+      <p>Whether you're a tailor, a manufacturer, a professional services firm, or a $100M enterprise, these five questions tell you where you stand:</p>
+
+      <ol>
+        <li><strong>Is your client/customer data in one place?</strong> If client information lives across spreadsheets, notebooks, email threads, and people's heads, you're not ready for AI. You're ready for a CRM.</li>
+        <li><strong>Are your core workflows documented or systematic?</strong> If the answer to "how does this process work?" is "ask Sarah, she knows," that's a person dependency, not a system. AI can't automate what isn't defined.</li>
+        <li><strong>Do you capture interaction data?</strong> Every call, email, meeting, and transaction is data. If you're not logging it somewhere structured, you're burning fuel that could power future insights.</li>
+        <li><strong>Can your team describe their biggest time wasters?</strong> The best AI applications start with "what do your people spend time on that they shouldn't?" If no one can articulate that, you need a conversation before you need a tool.</li>
+        <li><strong>Is there one person who, if they left, would take critical knowledge with them?</strong> If yes, that knowledge needs to be externalized into a system before anything else. AI can help preserve and scale institutional knowledge, but only if it's captured first.</li>
+      </ol>
+
+      <p>If you answered "no" to two or more of these, you're not behind on AI. You're behind on infrastructure. And the good news is that's a solvable problem, often in days, not months.</p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to turn AI into operational leverage?</h3>
+      <a href="https://tidycal.com/cjmayer/15-minute-intro" class="cta-button" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+
+    <div class="more-articles">
+      <h3>More from WRKSTREAM</h3>
+      <div class="articles-grid">
+        <a href="/blog/just-because-i-can-cook" class="article-card">
+          <div class="article-card-category">Blog</div>
+          <h4 class="article-card-title">Just Because I Can Cook Doesn't Mean I Should Be a Chef</h4>
+          <div class="article-card-meta">8 min read</div>
+        </a>
+        <a href="/blog/the-50m-company-ai-gap" class="article-card">
+          <div class="article-card-category">Blog</div>
+          <h4 class="article-card-title">The $50M Company AI Gap (And Why Big Tech Can't Fix It)</h4>
+          <div class="article-card-meta">6 min read</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 WRKSTREAM LLC</div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/company/wrkstream" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:justin@wrkstream.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const mainNav = document.getElementById('mainNav');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Scroll nav background
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.article-body > h2, .article-body > h3, .article-body > p, .article-body > ul, .article-body > ol, .article-body > blockquote');
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
