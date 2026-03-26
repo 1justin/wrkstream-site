@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How We Think: The Analog Brand Problem — WRKSTREAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FAFAF8;
+  --bg-warm: #F5F4F0;
+  --card-bg: #ffffff;
+  --bg-accent: #eeedea;
+  --accent: #2D6A4F;
+  --accent-dim: rgba(45,106,79,0.5);
+  --accent-pale: rgba(45,106,79,0.08);
+  --text: #1A1A18;
+  --text-secondary: #6b6b66;
+  --text-mid: rgba(26,26,24,0.75);
+  --text-strong: #1A1A18;
+  --text-muted: #9c9c97;
+  --border: rgba(229,228,224,0.8);
+  --red-dim: rgba(200,80,80,0.15);
+  --green-dim: rgba(45,106,79,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 999; opacity: 0.025;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  background: rgba(250,250,248,0.8);
+  border-bottom: 1px solid rgba(229,228,224,0.5);
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  padding: 0.75rem 3rem;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+}
+.logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--text) !important;
+  color: var(--bg) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  font-size: 0.78rem !important;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.nav-cta:hover { background: rgba(26,26,24,0.85) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 55% 45%;
+  align-items: center;
+  padding: 8rem 3rem 5rem;
+  position: relative; overflow: hidden;
+  margin-top: 60px;
+}
+.hero::after {
+  content: '';
+  position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+  background: linear-gradient(160deg, transparent, rgba(45,106,79,0.02) 50%, transparent);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 1.75rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(40px, 5.5vw, 72px); line-height: 1.07; font-weight: 400;
+  color: var(--text); margin-bottom: 1.75rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
+
+.hero-intro {
+  font-size: 15px; line-height: 1.85; color: var(--text-secondary);
+  max-width: 520px; margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+}
+
+.hero-pills {
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
+}
+.pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em;
+  padding: 0.4rem 0.9rem; border: 1px solid var(--border); color: var(--text-secondary);
+  text-transform: uppercase;
+  background: var(--card-bg);
+}
+
+.hero-right {
+  padding-left: 5rem; opacity: 0; animation: fadeIn 1s ease 0.6s forwards;
+}
+.hero-pullquote {
+  border-left: 2px solid var(--accent);
+  padding: 1.75rem 0 1.75rem 2rem;
+}
+.hero-pullquote-text {
+  font-family: 'Instrument Serif', serif; font-size: 20px; font-style: italic;
+  line-height: 1.55; color: var(--text); margin-bottom: 1.25rem;
+}
+.hero-pullquote-attr {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em;
+  color: var(--text-secondary); text-transform: uppercase;
+}
+
+/* SECTIONS */
+section { padding: 5.5rem 3rem; position: relative; }
+section + section { border-top: 1px solid var(--border); }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 0.85rem;
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 400; line-height: 1.15;
+  color: var(--text); margin-bottom: 1.25rem;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+.section-intro { font-size: 15px; line-height: 1.85; color: var(--text-secondary); max-width: 680px; margin-bottom: 3rem; }
+
+/* BEFORE / AFTER */
+.ba-wrap {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+  background: var(--border); margin-top: 1rem;
+}
+.ba-col {
+  padding: 3rem 2.5rem;
+}
+.ba-before { background: var(--bg-warm); }
+.ba-after { background: var(--card-bg); }
+.ba-divider {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-accent); width: 56px;
+  position: relative;
+}
+.ba-arrow {
+  display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+}
+.ba-arrow-line {
+  width: 1px; flex: 1; background: var(--accent-dim);
+}
+.ba-arrow-head {
+  width: 0; height: 0;
+  border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--accent);
+}
+.ba-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.ba-before .ba-label { color: rgba(200,80,80,0.6); }
+.ba-after .ba-label { color: var(--accent); }
+
+.ba-item {
+  display: flex; align-items: flex-start; gap: 0.875rem;
+  margin-bottom: 1.1rem;
+}
+.ba-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 0.45rem;
+}
+.ba-before .ba-dot { background: rgba(200,80,80,0.5); }
+.ba-after .ba-dot { background: var(--accent); }
+.ba-item-text { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+.ba-item-text strong { color: var(--text-strong); font-weight: 600; display: block; margin-bottom: 0.1rem; font-size: 13px; }
+
+/* CLIENT PROFILE */
+.profile-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border); margin-top: 1rem;
+}
+.profile-card {
+  background: var(--card-bg); padding: 2.5rem;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.profile-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 1px; background: linear-gradient(90deg, var(--accent-dim), transparent);
+}
+.profile-icon { font-size: 26px; margin-bottom: 1.25rem; display: block; }
+.profile-title { font-family: 'Instrument Serif', serif; font-size: 19px; color: var(--text); margin-bottom: 0.5rem; }
+.profile-desc { font-size: 12px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 1.25rem; }
+.profile-signals { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.profile-signals li { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); padding-left: 0.75rem; position: relative; }
+.profile-signals li::before { content: '›'; position: absolute; left: 0; color: var(--accent); }
+
+/* PERSONAS */
+.personas { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.persona { padding: 3.5rem; position: relative; overflow: hidden; }
+.persona-a { background: var(--card-bg); }
+.persona-b { background: var(--bg-warm); }
+.persona-tag {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.25em; padding: 0.3rem 0.75rem;
+  border: 1px solid var(--accent-dim); color: var(--accent);
+  text-transform: uppercase; margin-bottom: 1.75rem;
+}
+.persona-name { font-family: 'Instrument Serif', serif; font-size: 30px; font-style: italic; color: var(--text); margin-bottom: 0.4rem; }
+.persona-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1.75rem; }
+.persona-quote {
+  font-family: 'Instrument Serif', serif; font-size: 16px; font-style: italic;
+  line-height: 1.6; color: var(--text);
+  border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 1.75rem;
+}
+.trait-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2rem; }
+.trait-list li { font-size: 13px; color: var(--text-mid); padding-left: 1.25rem; position: relative; }
+.trait-list li::before { content: '—'; position: absolute; left: 0; color: var(--text-secondary); }
+.persona-strat { padding-top: 1.75rem; border-top: 1px solid var(--border); }
+.persona-strat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.6rem; }
+.persona-strat-body { font-size: 13px; line-height: 1.75; color: var(--text-secondary); }
+
+/* CHANNELS */
+.channel-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+.channel { background: var(--card-bg); padding: 2.25rem 2rem; position: relative; border: 1px solid var(--border); }
+.channel-badge { position: absolute; top: 1.25rem; right: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.15em; padding: 0.2rem 0.5rem; background: var(--accent-pale); border: 1px solid var(--border); color: var(--accent); text-transform: uppercase; }
+.channel-icon { font-size: 26px; margin-bottom: 1.1rem; display: block; }
+.channel-name { font-family: 'Instrument Serif', serif; font-size: 17px; color: var(--text); margin-bottom: 0.5rem; }
+.channel-desc { font-size: 12px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.1rem; }
+.channel-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.channel-list li { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); padding-left: 0.75rem; position: relative; }
+.channel-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); }
+
+/* PRIVATE LABEL */
+.pl-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 0.5rem; }
+.pl-col {}
+.pl-col-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+
+.callout {
+  background: var(--card-bg); border-left: 3px solid var(--accent);
+  padding: 1.5rem 2rem; margin: 2.5rem 0;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+.callout p { font-family: 'Instrument Serif', serif; font-size: 17px; font-style: italic; color: var(--text); line-height: 1.65; }
+
+.margin-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 2rem; margin-top: 1.5rem;
+}
+.margin-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid rgba(45,106,79,0.08); }
+.margin-row:last-child { border-bottom: none; }
+.margin-label { font-size: 13px; color: var(--text-secondary); }
+.margin-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.margin-val.cost { color: rgba(200,80,80,0.8); }
+.margin-val.rev { color: var(--accent); }
+.margin-val.profit { color: var(--accent); font-weight: 600; }
+
+/* AI / TECH STACK */
+.stack-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.stack-card { background: var(--card-bg); padding: 2.25rem; border: 1px solid var(--border); }
+.stack-phase { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.85rem; }
+.stack-title { font-family: 'Instrument Serif', serif; font-size: 18px; color: var(--text); margin-bottom: 0.65rem; }
+.stack-desc { font-size: 12px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 1.1rem; }
+.stack-example { background: var(--bg-warm); border-left: 2px solid var(--accent-dim); padding: 0.75rem 1rem; font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.6; color: var(--text); }
+.stack-cost { margin-top: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(45,106,79,0.4); }
+
+/* FLYWHEEL */
+.flywheel { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); margin-top: 2rem; }
+.fw-step { background: var(--card-bg); padding: 2rem 1.5rem; text-align: center; position: relative; border: 1px solid var(--border); }
+.fw-step:nth-child(even) { background: var(--bg-warm); }
+.fw-num { font-family: 'Instrument Serif', serif; font-size: 28px; font-style: italic; color: var(--accent); opacity: 0.35; line-height: 1; margin-bottom: 0.65rem; }
+.fw-label { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; line-height: 1.3; }
+.fw-sub { font-size: 10px; color: var(--text-secondary); line-height: 1.5; }
+
+/* BUDGET */
+.budget-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+.budget-table thead tr { background: var(--bg-warm); }
+.budget-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 0.85rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border); }
+.budget-table td { font-size: 13px; color: var(--text-secondary); padding: 0.8rem 1.25rem; border-bottom: 1px solid rgba(229,228,224,0.8); vertical-align: top; }
+.budget-table tbody tr:nth-child(odd) { background: var(--card-bg); }
+.budget-table tbody tr:nth-child(even) { background: var(--bg-warm); }
+.budget-table .tool-name { color: var(--text); font-weight: 600; }
+.budget-table .cost { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); }
+.budget-total { background: var(--bg-warm) !important; }
+.budget-total td { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent) !important; padding-top: 1.1rem; padding-bottom: 1.1rem; border-top: 1px solid var(--border); }
+
+/* ELEVENLABS */
+.el-block { background: var(--card-bg); border: 1px solid var(--border); padding: 3rem; position: relative; overflow: hidden; margin-top: 2.5rem; }
+.el-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent 60%); }
+.el-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.1rem; }
+.el-title { font-family: 'Instrument Serif', serif; font-size: 24px; font-style: italic; color: var(--text); margin-bottom: 0.85rem; max-width: 580px; }
+.el-body { font-size: 13px; line-height: 1.85; color: var(--text-secondary); max-width: 680px; margin-bottom: 2rem; }
+.script-block { background: var(--bg-warm); border: 1px solid var(--border); border-left: 2px solid var(--accent); padding: 2rem; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 15px; line-height: 2; color: var(--text); position: relative; }
+.script-block::before { content: 'SAMPLE SCRIPT'; position: absolute; top: -1px; right: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.2em; padding: 0.2rem 0.6rem; background: var(--accent); color: var(--bg); font-style: normal; }
+.script-beat { display: block; margin-bottom: 0.35rem; }
+.script-dir { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-style: normal; color: var(--text-secondary); letter-spacing: 0.15em; display: block; margin: 1rem 0 0.25rem; }
+
+/* CLOSING */
+.closing { background: var(--bg-warm); padding: 6rem 3rem; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+.closing::before { content: 'WRKSTREAM'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Instrument Serif', serif; font-size: 18vw; font-style: italic; color: rgba(45,106,79,0.03); white-space: nowrap; pointer-events: none; }
+.closing-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 2rem; }
+.closing-title { font-family: 'Instrument Serif', serif; font-size: clamp(28px,4vw,46px); font-style: italic; color: var(--text); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+.closing-body { font-size: 14px; line-height: 1.85; color: var(--text-secondary); max-width: 520px; margin: 0 auto 2.5rem; }
+.closing-rule { width: 60px; height: 1px; background: var(--accent); margin: 0 auto 2rem; }
+.closing-byline { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-secondary); text-transform: uppercase; }
+
+/* UTIL */
+.gold-rule { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.two-col-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.two-col-title { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--text); margin-bottom: 1rem; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 960px) {
+  nav { padding: 1rem 1.5rem; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding: 7rem 1.5rem 4rem; margin-top: 60px; }
+  .hero-right { padding-left: 0; padding-top: 3rem; }
+  section { padding: 4rem 1.5rem; }
+  .personas, .two-col, .pl-wrap, .ba-wrap { grid-template-columns: 1fr; }
+  .ba-divider { width: 100%; height: 48px; flex-direction: row; }
+  .ba-arrow { flex-direction: row; }
+  .ba-arrow-line { height: 1px; flex: 1; width: auto; }
+  .ba-arrow-head { border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--accent); }
+  .channel-wrap { grid-template-columns: 1fr 1fr; }
+  .stack-3 { grid-template-columns: 1fr; }
+  .flywheel { grid-template-columns: 1fr; }
+  .profile-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="/" class="logo">WRKSTREAM</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#workshop">Workshop</a>
+    <a href="/#work">Work</a>
+    <a href="/blog">Journal</a>
+    <a href="/#about">About</a>
+    <a href="https://tidycal.com/cjmayer/15-minute-intro" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="eyebrow">WRKSTREAM / How We Think</div>
+    <h1 class="hero-title">The craft is<br>perfect. The<br><em>signal</em> is not.</h1>
+    <p class="hero-intro">There is a category of expert service business where the product is extraordinary and the digital presence is an afterthought. The gap between what they deliver and how they appear online is not a marketing problem. It is a systems problem. And it is almost always solvable for under $100 a month.</p>
+    <div class="hero-pills">
+      <div class="pill">Boutique Clothiers</div>
+      <div class="pill">Custom Tailoring</div>
+      <div class="pill">Major Metro Markets</div>
+      <div class="pill">Solo to 5-Person Shops</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-pullquote">
+      <div class="hero-pullquote-text">"The fear people have before they walk into an expert's domain is not about price. It is about not knowing the rules. Remove that fear, and the conversion problem largely solves itself."</div>
+      <div class="hero-pullquote-attr">Justin Mayer — WRKSTREAM LLC</div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- BEFORE / AFTER -->
+<section>
+  <div class="section-label">The Transformation</div>
+  <h2 class="section-title">What <em>changes</em> when the signal matches the craft.</h2>
+  <p class="section-intro">A boutique clothier with 15 years of experience and a contact form that goes unanswered for three days is not a bad business. It is a great business with a solvable infrastructure problem. Here is the before and after.</p>
+
+  <div class="ba-wrap reveal">
+    <div class="ba-col ba-before">
+      <div class="ba-label">Before — The Typical State</div>
+
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Invisible to search</strong>A Squarespace template with three photos and a contact form. No FAQ, no schema markup, no Google Business Profile. Prospective clients cannot find you, and when they do, nothing builds confidence.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Friction before hello</strong>A contact form and a 48-hour wait. No booking system, no intake, no acknowledgment. Warm leads go cold while waiting for a reply that never feels urgent enough.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Expertise gap unfilled</strong>First-time clients do not know what to ask. Nothing on the website tells them what to expect, how it works, or what it costs. The anxiety before the first appointment goes unaddressed.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Revenue is single-threaded</strong>Every dollar comes from custom work. No second revenue line. No off-season income. No way to stay top of mind between garments without manually reaching out.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Referrals happen by accident</strong>Great clients refer others, but only when they happen to think of it. No system captures the moment of peak satisfaction and turns it into an ask.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Half the market untouched</strong>Marketing goes to the person who wants the suit. The person making the decision for him — his partner, planning an occasion — is never spoken to directly.</div>
+      </div>
+    </div>
+
+    <div class="ba-divider">
+      <div class="ba-arrow">
+        <div class="ba-arrow-line"></div>
+        <div class="ba-arrow-head"></div>
+        <div class="ba-arrow-line"></div>
+      </div>
+    </div>
+
+    <div class="ba-col ba-after">
+      <div class="ba-label">After — What the System Delivers</div>
+
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Discoverable and credible</strong>Google Business Profile, FAQ page targeting real search queries, schema markup, and consistent directory listings. When someone searches for a custom clothier in your city, you appear and you look established.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Zero-friction intake</strong>A conversational chatbot replaces the contact form. Prospective clients answer 8 questions in a natural conversation. By the time they book, you already know their occasions, their style references, and what they want to feel like.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Fear removed before arrival</strong>The website, the FAQ, the intake conversation, and the booking confirmation all answer the questions a first-time client is too self-conscious to ask. They arrive confident instead of cautious.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>A second revenue line that runs itself</strong>A curated selection of private-label knitwear and accessories sourced directly from the same factories that supply premium brands. High margin, no fitting required, ships in a flat rate box.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Referrals on a schedule</strong>Every delivered garment triggers an automated, personalized request at the moment of peak satisfaction. Review velocity builds consistently. Referrals are asked for at exactly the right time.</div>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <div class="ba-item-text"><strong>Both buyers reached</strong>Instagram reels and targeted ads speak directly to the person planning the occasion for someone she loves. She books it. He shows up. He becomes a client for life. She becomes a referral source.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT PROFILE -->
+<section>
+  <div class="section-label">Who This Is For</div>
+  <h2 class="section-title">The boutique clothier<br>in a <em>major metro</em>.</h2>
+  <p class="section-intro">This framework was built around a specific type of business: a custom clothier or bespoke tailor operating in a large city with real craft, real expertise, and a client experience that far exceeds what their digital presence communicates. The opportunity is consistent across markets.</p>
+
+  <div class="profile-grid reveal">
+    <div class="profile-card">
+      <span class="profile-icon">🧵</span>
+      <div class="profile-title">The Operator Profile</div>
+      <p class="profile-desc">Solo to small team. 10 to 20 years of craft. Outsourced production with a trusted partner. Primary revenue from custom garments. Word of mouth is strong but underdeveloped. No current system for reactivation or referral capture.</p>
+      <ul class="profile-signals">
+        <li>Custom suits, shirts, trousers, occasion wear</li>
+        <li>Fittings at studio or client location</li>
+        <li>$1,000 to $3,000 average order value</li>
+        <li>Clients range from first-timers to wardrobe regulars</li>
+        <li>Strong on craft, light on systems</li>
+      </ul>
+    </div>
+    <div class="profile-card">
+      <span class="profile-icon">🏙️</span>
+      <div class="profile-title">The Market Profile</div>
+      <p class="profile-desc">Major metropolitan area with a professional class that has the budget and the occasion demand for custom clothing. Large enough to support the business. Small enough that "best custom clothier in [city]" is actually winnable within 18 months.</p>
+      <ul class="profile-signals">
+        <li>Chicago, Dallas, Atlanta, Denver, Nashville</li>
+        <li>Affluent suburbs equally underserved</li>
+        <li>Wedding, corporate, and occasion demand year-round</li>
+        <li>LLM and Google search opportunity not yet claimed</li>
+        <li>Premium positioning available to anyone who takes it</li>
+      </ul>
+    </div>
+    <div class="profile-card">
+      <span class="profile-icon">📊</span>
+      <div class="profile-title">The Opportunity Profile</div>
+      <p class="profile-desc">The infrastructure gap between what this business delivers and how it appears is almost entirely a systems problem, not a craft problem. The craft is there. The signal is not. Closing that gap does not require a rebrand or a large budget. It requires the right stack and a clear strategy.</p>
+      <ul class="profile-signals">
+        <li>Under $100/month in technology</li>
+        <li>20 to 30 hours of setup, one time</li>
+        <li>2 to 4 hours of monthly maintenance</li>
+        <li>Break-even: one additional garment sale per month</li>
+        <li>Full ROI: within 90 days of going live</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TWO BUYERS -->
+<section>
+  <div class="section-label">Buyer Archetypes</div>
+  <h2 class="section-title">Two buyers.<br><em>Completely different</em> paths in.</h2>
+  <p class="section-intro">Most boutique clothiers market to one person. They are missing half their market. The two buyer archetypes have almost nothing in common in how they discover the business, why they book, and who is actually making the decision. Both need to be spoken to differently.</p>
+
+  <div class="personas reveal">
+    <div class="persona persona-a">
+      <div class="persona-tag">Archetype 01</div>
+      <div class="persona-name">The Aficionado</div>
+      <div class="persona-sub">Self-directed / High intent / Already convinced</div>
+      <div class="persona-quote">"I have been wearing off-the-rack for too long. I know what I want. I just need to find someone I can actually trust to deliver it."</div>
+      <ul class="trait-list">
+        <li>Actively searching. Already knows the vocabulary.</li>
+        <li>High lifetime value. Refers others exactly like himself.</li>
+        <li>Values the clothier's point of view, not just execution.</li>
+        <li>Google and LLM search are his discovery channels.</li>
+        <li>Reviews and specific social proof matter enormously.</li>
+        <li>Will become a long-term relationship, not a transaction.</li>
+      </ul>
+      <div class="persona-strat">
+        <div class="persona-strat-label">How to reach him</div>
+        <p class="persona-strat-body">SEO, LLM search optimization, Google Business Profile, and a website that communicates a genuine point of view. He is already looking. He needs to find you, trust what he sees, and have a frictionless path to a first appointment. The FAQ page and the intake conversation do the heavy lifting here.</p>
+      </div>
+    </div>
+
+    <div class="persona persona-b">
+      <div class="persona-tag">Archetype 02</div>
+      <div class="persona-name">The Facilitated Buyer</div>
+      <div class="persona-sub">Decision made for him / Occasion-driven / She researches, he shows up</div>
+      <div class="persona-quote">"My partner found this. She says he comes to the house, brings the fabric, and there is a drink involved. I just have to show up and say yes to things."</div>
+      <ul class="trait-list">
+        <li>A woman is making the research decision. He is the beneficiary.</li>
+        <li>Occasion-driven: wedding, promotion, milestone, new role.</li>
+        <li>The ease of the experience is the primary selling point for her.</li>
+        <li>Instagram reels and targeted ads are the discovery channels.</li>
+        <li>She is giving him something, not sending him somewhere.</li>
+        <li>Converts quickly. Refers socially and enthusiastically.</li>
+      </ul>
+      <div class="persona-strat">
+        <div class="persona-strat-label">How to reach her</div>
+        <p class="persona-strat-body">Instagram Reels with a luxury voiceover, targeted ads around wedding and milestone keywords, and messaging that leads with the experience rather than the craft. "He comes to you. He brings the fabric. There is a drink waiting." She is not buying a suit. She is solving a problem for someone she loves, elegantly. Market to that. She makes the call. He shows up and becomes a client for life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section>
+  <div class="section-label">The Multichannel Map</div>
+  <h2 class="section-title">Four surfaces.<br><em>One coherent</em> presence.</h2>
+  <p class="section-intro">The strategy is not about being everywhere. It is about being present at every moment where a potential client makes a decision — discovery, consideration, booking, and the long arc of the relationship afterward. Each surface has a job. None of them require daily management once built.</p>
+
+  <div class="channel-wrap reveal">
+    <div class="channel">
+      <div class="channel-badge">Discovery</div>
+      <span class="channel-icon">📍</span>
+      <div class="channel-name">Physical Presence</div>
+      <p class="channel-desc">The fitting room is wherever the client is most comfortable. Studio, office, home, or a distinctive partner venue. Flexibility is itself a differentiator in a world of fixed retail.</p>
+      <ul class="channel-list">
+        <li>Private studio or home base</li>
+        <li>In-home and in-office fittings</li>
+        <li>Distinctive partner venues (car clubs, private spaces)</li>
+        <li>Fabric suitcase + tape measure = fully mobile</li>
+        <li>Event presence at clubs and private organizations</li>
+      </ul>
+    </div>
+
+    <div class="channel">
+      <div class="channel-badge">Credibility</div>
+      <span class="channel-icon">🌐</span>
+      <div class="channel-name">Digital Presence</div>
+      <p class="channel-desc">The website is the credibility bridge. It should look and feel like a brand that has been quietly dressing the city's best for years. FAQ, chatbot intake, editorial design language throughout.</p>
+      <ul class="channel-list">
+        <li>Luxury-positioned website (editorial, not templated)</li>
+        <li>FAQ page targeting Google and LLM queries</li>
+        <li>Conversational chatbot intake</li>
+        <li>Schema markup for search visibility</li>
+        <li>Google Business Profile, fully optimized</li>
+      </ul>
+    </div>
+
+    <div class="channel">
+      <div class="channel-badge">Reach</div>
+      <span class="channel-icon">📱</span>
+      <div class="channel-name">Social and Paid</div>
+      <p class="channel-desc">Instagram is the primary reach channel for the Facilitated Buyer. Short-form video with luxury voiceover and targeted ads around wedding and milestone keywords. ElevenLabs makes this look like a $50k production for $200.</p>
+      <ul class="channel-list">
+        <li>Instagram Reels with AI voiceover</li>
+        <li>Targeted ads: wedding, gifting, anniversary keywords</li>
+        <li>Behind-the-scenes content at distinctive venues</li>
+        <li>Women-targeted messaging for facilitated buyers</li>
+        <li>Pinterest for style inspiration crossover</li>
+      </ul>
+    </div>
+
+    <div class="channel">
+      <div class="channel-badge">Retention</div>
+      <span class="channel-icon">✉️</span>
+      <div class="channel-name">Email and Text</div>
+      <p class="channel-desc">The relationship engine runs on email and SMS. Seasonal campaigns, event reminders captured at intake, garment care, and reactivation sequences — automated, personal, consistent.</p>
+      <ul class="channel-list">
+        <li>4 seasonal campaigns, city-weather-aware</li>
+        <li>Event-driven reactivation from intake data</li>
+        <li>Anniversary and milestone reminders</li>
+        <li>Post-delivery garment care (AI-personalized)</li>
+        <li>Review request sequence at peak satisfaction</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE LABEL -->
+<section>
+  <div class="section-label">The Second Revenue Line</div>
+  <h2 class="section-title">Private label:<br><em>between</em> the fittings.</h2>
+  <p class="section-intro">Custom garments are the craft and the margin. But there is significant revenue available between fittings that most boutique clothiers leave entirely on the table. A small, curated selection of white-labeled pieces sourced directly from premium factories gives the business a second income stream that requires no fitting, no measuring, and almost no overhead.</p>
+
+  <div class="callout">
+    <p>Import Yeti is a free tool that surfaces US import records. Search any premium brand and see exactly which factories supply them, where those factories are, and what they produce. Many accept direct orders at their standard minimum. The same quality. Your label. Your margin.</p>
+  </div>
+
+  <div class="pl-wrap reveal">
+    <div class="pl-col">
+      <div class="pl-col-label">What to carry</div>
+      <div class="two-col-title" style="font-size:16px; margin-bottom:1.25rem; font-family:'Manrope',sans-serif; font-weight:400;">The right categories are the ones that do not require fit to be excellent.</div>
+      <ul class="trait-list">
+        <li><strong style="color:var(--text)">Merino and cashmere knitwear</strong> — Crew necks, v-necks, quarter-zips. Three colorways: navy, cream, charcoal. One weight per season. Pairs with everything in a custom wardrobe.</li>
+        <li><strong style="color:var(--text)">Fine-knit polos</strong> — Elevated casual. Works from a client dinner to a Saturday at the golf club. Strong repeat purchase category.</li>
+        <li><strong style="color:var(--text)">Pocket squares and accessories</strong> — High margin, ships flat. Easy add-on at every fitting. Never goes out of style.</li>
+        <li><strong style="color:var(--text)">Leather card holders or small goods</strong> — Optional. Low SKU count. Signals attention to the full picture of how a man presents himself.</li>
+      </ul>
+    </div>
+
+    <div class="pl-col">
+      <div class="pl-col-label">The margin math</div>
+      <div class="margin-card">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.2em; color:var(--text-secondary); text-transform:uppercase; margin-bottom:1rem;">Example: Cashmere Crew Neck</div>
+        <div class="margin-row">
+          <span class="margin-label">Factory direct cost (MOQ 20 units)</span>
+          <span class="margin-val cost">$38 – $55</span>
+        </div>
+        <div class="margin-row">
+          <span class="margin-label">Hang tag, packaging, shipping</span>
+          <span class="margin-val cost">$8 – $12</span>
+        </div>
+        <div class="margin-row">
+          <span class="margin-label">Total landed cost</span>
+          <span class="margin-val cost">$46 – $67</span>
+        </div>
+        <div class="margin-row">
+          <span class="margin-label">Retail price (private label)</span>
+          <span class="margin-val rev">$185 – $250</span>
+        </div>
+        <div class="margin-row">
+          <span class="margin-label" style="color:var(--accent)">Gross margin per unit</span>
+          <span class="margin-val profit">$118 – $184 (3–4x)</span>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem; font-size:12px; line-height:1.75; color:var(--text-secondary)">Five units sold per month covers the entire monthly tech stack twice over. Sold in person at fittings, via a Stripe payment link, or through a simple product page on the existing website. No shipping complexity. No warehouse. Flat rate box, done.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ELEVENLABS -->
+<section>
+  <div class="section-label">The $200 Luxury Ad</div>
+  <h2 class="section-title">What <em>ElevenLabs</em> changes<br>for a boutique brand.</h2>
+  <p class="section-intro">ElevenLabs produces AI voiceovers indistinguishable from broadcast talent at $5 a month. Paired with iPhone footage shot at a distinctive venue, you have the visual and audio language of a luxury brand campaign produced in an afternoon. This is the reach strategy for the Facilitated Buyer on Instagram.</p>
+
+  <div class="el-block reveal">
+    <div class="el-eyebrow">The Concept — 30-Second Instagram Reel</div>
+    <div class="el-title">Looks like a $50,000 production. Costs $200 to make. Works for years.</div>
+    <p class="el-body">Shot on iPhone. Edited in CapCut or Premiere. Voiceover from ElevenLabs, warm and authoritative. B-roll: fabric swatches fanned on a surface, hands measuring a shoulder, a finished suit on a hanger, a man walking into a room differently than he walked out. No talking head. No text overlay. Just voice and image. Targeted at women planning a meaningful occasion for someone they love.</p>
+
+    <div class="script-block">
+      <span class="script-dir">[OPEN — slow pan across fabric swatches, warm light]</span>
+      <span class="script-beat">There are men who wear what fits the rack.</span>
+      <span class="script-beat">And men who wear what was made for them.</span>
+
+      <span class="script-dir">[CUT — hands measuring, deliberate, unhurried]</span>
+      <span class="script-beat">He comes to you. He brings the fabric. There is a drink waiting.</span>
+      <span class="script-beat">Thirty measurements. One permanent profile. Nothing approximate.</span>
+
+      <span class="script-dir">[CUT — finished garment, slow reveal]</span>
+      <span class="script-beat">And when it is done, it fits the way nothing off a rack ever has.</span>
+
+      <span class="script-dir">[HOLD — man walking with quiet confidence, fade]</span>
+      <span class="script-beat">Every day is all there is. Dress accordingly.</span>
+    </div>
+  </div>
+</section>
+
+<!-- AI LAYER -->
+<section>
+  <div class="section-label">The AI Layer</div>
+  <h2 class="section-title">Set it. <em>Forget it.</em><br>Focus on the craft.</h2>
+  <p class="section-intro">The AI layer is not a daily tool anyone logs into. It is a set of invisible systems that draft personalized emails, power the intake conversation, coach clients on review language, and surface the right client at the right moment. It runs in the background. The clothier gets the credit.</p>
+
+  <div class="stack-3 reveal">
+    <div class="stack-card">
+      <div class="stack-phase">Phase 1 — Launch</div>
+      <div class="stack-title">AI-drafted client communications</div>
+      <p class="stack-desc">Every post-appointment message, post-delivery note, review request, and seasonal campaign is drafted by Claude using the client's name, garment type, and order history. Review and send. Reads like it was written personally. Takes two minutes.</p>
+      <div class="stack-example">"Marcus — the flannel is exactly right. Your profile is updated. Let me know when you want to look at the fall selection before it books out."<br><br>← AI drafted. You sent it.</div>
+      <div class="stack-cost">~$5–10/month via API</div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-phase">Phase 2 — 60 Days</div>
+      <div class="stack-title">Conversational intake chatbot</div>
+      <p class="stack-desc">A Claude-powered chatbot replaces the contact form. It asks about occasions, style inspirations, wardrobe gaps, and upcoming life events — naturally, in conversation. The data populates the client profile before the first appointment.</p>
+      <div class="stack-example">"What brings you in today? Is there a specific occasion coming up, or are you thinking more broadly about how you want to show up?"<br><br>← Client answers. You arrive knowing them.</div>
+      <div class="stack-cost">Included in Phase 1 budget</div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-phase">Phase 3 — Future State</div>
+      <div class="stack-title">Style advisor and lookbook</div>
+      <p class="stack-desc">A lightweight web experience where clients describe an occasion or aesthetic and receive fabric and style recommendations from the curated library. Not an app — no download required, works on every phone, no one forgets it exists.</p>
+      <div class="stack-example">"I have a board presentation in March. I want to look like I belong there but not like I'm trying too hard."<br><br>← AI recommends. You confirm. They book.</div>
+      <div class="stack-cost">~$20–40/month at scale</div>
+    </div>
+  </div>
+
+  <div class="callout reveal">
+    <p>An app is the wrong answer for a low-frequency luxury service. No one downloads an app for their tailor. No one remembers it a week later. The web is the platform. SMS is the nudge. Email is the relationship. Simplicity is the strategy.</p>
+  </div>
+</section>
+
+<!-- FLYWHEEL -->
+<section>
+  <div class="section-label">The Content Engine</div>
+  <h2 class="section-title">The flywheel that<br><em>compounds</em> over time.</h2>
+  <p class="section-intro">The best content for a boutique clothier is not promotional. It is educational, opinionated, and specific to the city. Content built around Answer the Public queries feeds Google, LLM search, and Instagram simultaneously. Four to six strong pieces per quarter keep working long after they are posted.</p>
+
+  <div class="flywheel reveal">
+    <div class="fw-step">
+      <div class="fw-num">1</div>
+      <div class="fw-label">Answer the Public query identified</div>
+      <div class="fw-sub">"How much does a custom suit cost in [city]"</div>
+    </div>
+    <div class="fw-step">
+      <div class="fw-num">2</div>
+      <div class="fw-label">FAQ or article written</div>
+      <div class="fw-sub">Specific, plain-language answer. Optimized for search.</div>
+    </div>
+    <div class="fw-step">
+      <div class="fw-num">3</div>
+      <div class="fw-label">Google indexes it</div>
+      <div class="fw-sub">Aficionados find you via search. Credibility builds.</div>
+    </div>
+    <div class="fw-step">
+      <div class="fw-num">4</div>
+      <div class="fw-label">LLMs cite it</div>
+      <div class="fw-sub">ChatGPT and Perplexity recommend by name.</div>
+    </div>
+    <div class="fw-step">
+      <div class="fw-num">5</div>
+      <div class="fw-label">Reviews reinforce it</div>
+      <div class="fw-sub">Specific client language compounds the signal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section>
+  <div class="section-label">The Full Stack</div>
+  <h2 class="section-title">Under $100 a month.<br><em>Including everything.</em></h2>
+  <p class="section-intro">This is the complete infrastructure for a boutique clothier operating at the 1% of 1% level of digital sophistication. Ten tools, one automation engine, and an AI layer that runs in the background. Total cost is less than the margin on a single dress shirt.</p>
+
+  <table class="budget-table reveal">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Category</th>
+        <th>Cost</th>
+        <th>What it does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tool-name">TidyCal</td>
+        <td>Booking</td>
+        <td class="cost">$29 once</td>
+        <td>One-time payment booking system. No monthly fee. Feature-complete for a solo or small-team operator.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Notion</td>
+        <td>Knowledge Hub</td>
+        <td class="cost">Free</td>
+        <td>Client profiles, vendor contacts, fabric library, process SOPs. Mobile-friendly. The permanent memory of the business.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">ClickUp</td>
+        <td>Operations</td>
+        <td class="cost">$10 / mo</td>
+        <td>Pipeline, production tracking, reactivation queue. More transparent on pricing than alternatives that scale badly.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Make</td>
+        <td>Automation</td>
+        <td class="cost">$16 / mo</td>
+        <td>The engine connecting every tool. More powerful than Zapier at half the price. Runs every workflow described here.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Tally</td>
+        <td>Forms</td>
+        <td class="cost">Free</td>
+        <td>Intake forms for Phase 1. Beautiful, feeds into Notion. Replaced by the chatbot in Phase 2.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Loops</td>
+        <td>Email</td>
+        <td class="cost">$0–30 / mo</td>
+        <td>Transactional and marketing email. Clean API for Make. Free until meaningful scale.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Claude API</td>
+        <td>AI Layer</td>
+        <td class="cost">~$10–20 / mo</td>
+        <td>Drafts personalized emails, powers the chatbot intake, writes review requests. Invisible to clients.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Stripe</td>
+        <td>Payments</td>
+        <td class="cost">0% + fees</td>
+        <td>Deposits, invoices, and private-label product sales. Clients pay online before garments enter production.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">ElevenLabs</td>
+        <td>Content / Ads</td>
+        <td class="cost">$5 / mo</td>
+        <td>Luxury-grade AI voiceover for Instagram reels and brand video. $200 total production value. $5 monthly cost.</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Squarespace / Webflow</td>
+        <td>Website Hosting</td>
+        <td class="cost">$23–39 / mo</td>
+        <td>Existing or new hosting platform. New design, FAQ, and chatbot layer run here. Schema markup implemented on top.</td>
+      </tr>
+      <tr class="budget-total">
+        <td colspan="2"><strong>Total monthly (steady state)</strong></td>
+        <td class="cost"><strong>$84–$120 / mo</strong></td>
+        <td>TidyCal is one-time. Stripe fees are variable. One additional garment sale per month covers the entire stack for the year.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-label">WRKSTREAM LLC — How We Think About This</div>
+  <h2 class="closing-title">The analog brand problem is always <em>solvable.</em></h2>
+  <p class="closing-body">The best service businesses in the world are not winning on product alone. They are winning because the signal matches the substance. The craft is already there. The systems are not. That is the gap worth closing — and it closes faster than almost anyone expects.</p>
+  <div class="closing-rule"></div>
+  <div class="closing-byline">Justin Mayer — WRKSTREAM LLC — 2026 — wrkstream.com</div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+</script>
+</body>
+</html>
