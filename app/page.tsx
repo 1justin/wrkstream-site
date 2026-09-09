@@ -13,7 +13,7 @@ const work = [
   { type:'VENTURE', title:'HarborIQ', tags:'INSURANCE · SAAS · AI', outcome:'Built an AI-native operating platform for independent insurance agencies.', art:'harbor', href:'/work/harboriq', image:'/work/harboriq-dashboard.jpg', alt:'HarborIQ agency command center interface' },
   { type:'CLIENT WORK', title:'Sertler & Associates', tags:'INSURANCE · WEBSITE · SYSTEMS', outcome:'Turned a dated agency website into a multilingual, connected digital front door.', art:'launch', href:'/work/sertler-associates', image:'/work/sertler-website.jpg', alt:'Sertler & Associates website displayed on a laptop' },
   { type:'PRODUCT', title:'Life Fitness Portfolio', tags:'FITNESS · HARDWARE · LEADERSHIP', outcome:'Led connected cardio and workplace wellness portfolios across a $420M global business.', art:'fitness', href:'/work/life-fitness', image:'/work/life-fitness-treadmill-poster.jpg', alt:'Life Fitness treadmill in motion' },
-  { type:'ADVISORY', title:'AI Working Session', tags:'ENTERPRISE · STRATEGY · AI', outcome:'Turned a broad AI mandate into a focused roadmap leaders could act on.', art:'advisory', image:'/work/ai-working-session.jpg', alt:'Justin leading a collaborative AI strategy working session' },
+  { type:'ADVISORY', title:'Enterprise AI Advisory', tags:'ENTERPRISE · STRATEGY · AI', outcome:'Turned fragmented AI adoption into a focused roadmap leaders could act on.', art:'advisory', href:'/work/enterprise-ai-advisory', image:'/work/ai-working-session.jpg', alt:'Justin leading a collaborative AI strategy working session' },
   { type:'PATENT', title:'From Sketch to IP', tags:'HARDWARE · INDUSTRIAL DESIGN · IP', outcome:'Developed and patented a physical product concept through commercialization.', art:'patent' },
 ];
 
