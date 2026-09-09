@@ -14,7 +14,7 @@ const work = [
   { type:'CLIENT WORK', title:'Sertler & Associates', tags:'INSURANCE · WEBSITE · SYSTEMS', outcome:'Turned a dated agency website into a multilingual, connected digital front door.', art:'launch', href:'/work/sertler-associates', image:'/work/sertler-website.jpg', alt:'Sertler & Associates website displayed on a laptop' },
   { type:'PRODUCT', title:'Life Fitness Portfolio', tags:'FITNESS · HARDWARE · LEADERSHIP', outcome:'Led connected cardio and workplace wellness portfolios across a $420M global business.', art:'fitness', href:'/work/life-fitness', image:'/work/life-fitness-treadmill-poster.jpg', alt:'Life Fitness treadmill in motion' },
   { type:'ADVISORY', title:'Enterprise AI Advisory', tags:'ENTERPRISE · STRATEGY · AI', outcome:'Reframed a multi-year, seven-figure AI program as a focused MVP that could prove value in weeks.', art:'advisory', href:'/work/enterprise-ai-advisory', image:'/work/ai-working-session.jpg', alt:'Justin leading a collaborative AI strategy working session' },
-  { type:'PATENT', title:'From Sketch to IP', tags:'HARDWARE · INDUSTRIAL DESIGN · IP', outcome:'Developed and patented a physical product concept through commercialization.', art:'patent' },
+  { type:'PATENT', title:'From Sketch to IP', tags:'HARDWARE · INDUSTRIAL DESIGN · IP', outcome:'Built an immersive product system that moved ideas through prototypes, patents, manufacturing, and market.', art:'patent', href:'/work/sketch-to-ip', image:'/work/inmovement/dt20-standing-desk.webp', alt:'InMovement desktop sit-to-stand workstation' },
 ];
 
 export default function Home() {
