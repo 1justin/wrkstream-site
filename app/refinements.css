@@ -1,0 +1,156 @@
+/* V2 refinement: progressive product studio with a cleaner, tailored edge. */
+:root {
+  --paper: #ffffff;
+}
+
+/* The logo blue is the primary highlight; red and green remain supporting signals. */
+.hero h1 em,
+.building-head h2 em,
+.offer-intro h2 em,
+.work-head h2 em,
+.discipline h2 em,
+.advisory h2 em,
+.small h2 em,
+footer h2 em {
+  color: var(--blue);
+}
+
+.lab-core {
+  background: var(--blue);
+  box-shadow: 0 0 90px #326bff45;
+}
+
+/* Give section one an editorial header row so its line break reads as deliberate. */
+.building-block > .section-index,
+.offer-block > .section-index,
+.discipline-block > .section-index,
+.advisory-block > .section-index,
+.small-block > .section-index {
+  padding: 0;
+  margin-bottom: 42px;
+}
+
+.building-block .building-head {
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.5fr);
+  gap: clamp(50px, 8vw, 130px);
+}
+
+.building-head h2 span,
+.building-head h2 em {
+  display: block;
+}
+
+.offer-block .offer-intro,
+.small-block .small-grid {
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.5fr);
+  gap: clamp(50px, 8vw, 130px);
+}
+
+.discipline-block .discipline-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+  gap: clamp(50px, 8vw, 130px);
+}
+
+.advisory-title {
+  max-width: 1120px;
+  margin-left: auto;
+}
+
+/* Clean whites in place of warm or linen-like neutrals. */
+.building,
+.discipline {
+  background: #ffffff;
+}
+
+.offers-section,
+.small {
+  background: #f5f7fa;
+}
+
+.mini-browser,
+.window-chrome,
+.dashboard {
+  background: #ffffff;
+}
+
+.venture-visual {
+  background: #e8edf5;
+}
+
+.work-art.patent,
+.offer.cream .offer-art {
+  background-color: #f4f6f9;
+}
+
+/* Ease the severity without making the interface soft or playful. */
+.hero-lab,
+.venture-card,
+.offer-art,
+.work-card,
+.workshop-card,
+.partner-card {
+  border-radius: 7px;
+}
+
+.mini-browser,
+.frame,
+.stack,
+.flow-node {
+  border-radius: 3px;
+}
+
+/* Keep the complete first word in view; allow the sequence to breathe on small screens. */
+.build-tape {
+  justify-content: flex-start;
+  gap: clamp(18px, 2.1vw, 34px);
+  padding-left: max(32px, calc((100vw - 1400px) / 2 + 32px));
+  padding-right: 32px;
+  font-size: clamp(26px, 4vw, 58px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.build-tape::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .building-block .building-head {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .offer-block .offer-intro,
+  .discipline-block .discipline-grid,
+  .small-block .small-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .building-block > .section-index,
+  .offer-block > .section-index,
+  .discipline-block > .section-index,
+  .advisory-block > .section-index,
+  .small-block > .section-index {
+    margin-bottom: 28px;
+  }
+
+  .build-tape {
+    font-size: 22px;
+    gap: 13px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+.venture-visual.packaging {
+  padding: 0;
+  background: #d7dbd1;
+}
+
+.venture-visual.packaging img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
