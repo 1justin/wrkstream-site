@@ -3,16 +3,16 @@ import styles from './project.module.css';
 
 export const metadata: Metadata = {
   title: 'Enterprise AI Advisory | WRKSTREAM',
-  description: 'External advisory support that helped turn cross-functional AI research into an enterprise roadmap for Clarke.',
+  description: 'Executive-sponsored advisory that reframed a multi-year, seven-figure AI program as a focused MVP that could prove value in weeks.',
   openGraph: {
     title: 'Enterprise AI Advisory | WRKSTREAM',
-    description: 'From fragmented adoption to a decision-ready enterprise AI roadmap.',
+    description: 'From a multi-year transformation program to a focused, five-figure AI MVP.',
     images: [{ url: '/work/ai-working-session.jpg', width: 1672, height: 941, alt: 'Collaborative AI strategy working session' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Enterprise AI Advisory | WRKSTREAM',
-    description: 'From fragmented adoption to a decision-ready enterprise AI roadmap.',
+    description: 'From a multi-year transformation program to a focused, five-figure AI MVP.',
     images: ['/work/ai-working-session.jpg'],
   },
 };
@@ -22,7 +22,7 @@ const Arrow = () => <span aria-hidden="true">↗</span>;
 const contributions = [
   ['01', 'Pressure-test the diagnosis', 'Validate the patterns emerging across functions and separate individual productivity wins from enterprise capability.'],
   ['02', 'Clarify the leadership gap', 'Make ownership explicit. Tools could not solve the absence of a dedicated champion, governance, and coordinated execution.'],
-  ['03', 'Sequence the investment', 'Move from a broad transformation mandate to a phased path that could generate learning before the hardest integrations.'],
+  ['03', 'Right-size the investment', 'Challenge the multi-year, seven-figure assumption and reframe the opportunity as a five-figure MVP that could prove value in weeks.'],
   ['04', 'Frame secure adoption', 'Address privacy, approved platforms, unstructured knowledge, and sensitive use cases as design constraints from the start.'],
 ];
 
@@ -34,10 +34,10 @@ const outcomes = [
 ];
 
 const phases = [
-  ['01', 'FOUNDATION', 'Months 1–4', 'Leadership, enterprise tools, an internal knowledge layer, and usage governance.'],
-  ['02', 'CUSTOMER', 'Months 5–10', 'Customer-facing applications, marketing capabilities, and regulatory validation.'],
-  ['03', 'INTEGRATION', 'Months 11–16', 'Predictive analytics, advanced workflows, and cross-functional data coordination.'],
-  ['04', 'ADVANTAGE', 'Months 17+', 'A repeatable innovation system that turns learning into ongoing business advantage.'],
+  ['01', 'FOCUS', 'First', 'Choose one valuable workflow with executive ownership, clear users, and a measurable business outcome.'],
+  ['02', 'BUILD', 'Weeks', 'Create a secure, useful MVP without waiting for every enterprise data and integration problem to be solved.'],
+  ['03', 'PROVE', 'In use', 'Put it into real work, measure adoption and value, and learn what the organization actually needs next.'],
+  ['04', 'SCALE', 'After proof', 'Expand the investment only when evidence supports the next use case, integration, or organizational capability.'],
 ];
 
 export default function EnterpriseAIAdvisoryProject() {
@@ -51,8 +51,8 @@ export default function EnterpriseAIAdvisoryProject() {
     <header className={styles.hero}>
       <div className={styles.meta}><span>Advisory / Enterprise AI / Business transformation</span><span>Case 04</span></div>
       <div className={styles.heroGrid}>
-        <div><p className={styles.kicker}>Clarke / DePaul leadership capstone</p><h1>AI was already everywhere.<br/><em>Strategy wasn’t.</em></h1></div>
-        <div className={styles.intro}><p>External advisory support helped turn cross-functional research into a practical enterprise AI roadmap with clear leadership, governance, and sequencing.</p></div>
+        <div><p className={styles.kicker}>Clarke / Enterprise AI initiative</p><h1>AI was already everywhere.<br/><em>Strategy wasn’t.</em></h1></div>
+        <div className={styles.intro}><p>Brought in with executive sponsorship to turn a sprawling transformation idea into a practical first move the business could fund, build, and learn from.</p></div>
       </div>
 
       <div className={styles.film}>
@@ -62,10 +62,10 @@ export default function EnterpriseAIAdvisoryProject() {
       <p className={styles.caption}>Representative working-session visual</p>
 
       <div className={styles.metrics}>
-        <div><b>10</b><span>Functions studied</span></div>
-        <div><b>26+</b><span>Clarke coworkers engaged</span></div>
-        <div><b>3</b><span>Implementation scenarios</span></div>
-        <div><b>18</b><span>Months in the recommended path</span></div>
+        <div><b>7 fig.</b><span>Initial program assumption</span></div>
+        <div><b>5 fig.</b><span>Practical MVP investment</span></div>
+        <div><b>Years</b><span>Original horizon</span></div>
+        <div><b>Weeks</b><span>Path to first value</span></div>
       </div>
     </header>
 
@@ -83,7 +83,7 @@ export default function EnterpriseAIAdvisoryProject() {
 
     <section className={styles.darkSection}>
       <div className={styles.label}>02 / The advisory role</div>
-      <div className={styles.darkIntro}><h2>Turn the research into <em>decisions.</em></h2><p>A DePaul leadership capstone team led the internal discovery and departmental analysis. Justin joined as an external advisor to validate the findings, challenge the assumptions, and help shape an implementation model the organization could actually carry.</p></div>
+      <div className={styles.darkIntro}><h2>Turn the research into <em>decisions.</em></h2><p>Clarke’s Chief Customer Experience Officer brought Justin into one of the company’s strategic initiatives as an external advisor. Cross-functional research created the evidence base. The advisory work validated the findings, challenged the scale of the proposed response, and shaped an implementation model the organization could actually carry.</p></div>
       <div className={styles.contributions}>
         {contributions.map(([n,t,p]) => <article key={n}><span>{n}</span><h3>{t}</h3><p>{p}</p></article>)}
       </div>
@@ -110,8 +110,8 @@ export default function EnterpriseAIAdvisoryProject() {
     </section>
 
     <section className={styles.section}>
-      <div className={styles.label}>05 / The recommended path</div>
-      <div className={styles.pathIntro}><h2>Crawl. Walk. Run.<br/><em>Then keep learning.</em></h2><p>The recommendation favored a phased 18-month program over a high-risk big bang or a pilot too small to demonstrate enterprise value.</p></div>
+      <div className={styles.label}>05 / The right-sized path</div>
+      <div className={styles.pathIntro}><h2>Start with proof.<br/><em>Not a transformation program.</em></h2><p>The core advisory move was to cut through the assumed scale of the solution. A useful first version did not require a couple million dollars or years. A tightly scoped MVP could be built for tens of thousands and put to work in weeks.</p></div>
       <div className={styles.phases}>
         {phases.map(([n,t,time,p]) => <article key={n}><div><span>{n}</span><small>{time}</small></div><h3>{t}</h3><p>{p}</p></article>)}
       </div>
@@ -120,10 +120,10 @@ export default function EnterpriseAIAdvisoryProject() {
     <section className={styles.result}>
       <div className={styles.label}>06 / The result</div>
       <div className={styles.resultGrid}>
-        <h2>A broad AI mandate became a decision-ready plan.</h2>
-        <div><p>Clarke’s leadership received a researched view of current adoption, three implementation choices, a recommended sequence, and a draft governance foundation.</p><p>This was an advisory engagement. The result was clarity, alignment, and a practical route into implementation. It was not a claim that enterprise transformation had already occurred.</p></div>
+        <h2>Millions became thousands. Years became weeks.</h2>
+        <div><p>The advice changed the shape of the decision. Instead of committing to a broad transformation program upfront, Clarke could choose one important use case, prove value quickly, and let evidence determine the next investment.</p><p>The tangible output was a smaller, faster, more credible path into implementation, supported by cross-functional research, governance thinking, and executive sponsorship.</p></div>
       </div>
-      <div className={styles.credit}><span>PROJECT CONTEXT</span><p>DePaul leadership capstone with Clarke. Cross-functional research and deliverables developed by the capstone team with executive sponsorship from Clarke and external AI integration guidance from Justin Mayer.</p></div>
+      <div className={styles.credit}><span>PROJECT CONTEXT</span><p>Clarke enterprise AI initiative, supported by the Chief Customer Experience Officer. The initiative included a DePaul capstone workstream that contributed cross-functional research and supporting deliverables. Justin Mayer advised on business integration, implementation scope, cost, timeline, governance, and the path to an MVP.</p></div>
     </section>
 
     <footer className={styles.footer}>
