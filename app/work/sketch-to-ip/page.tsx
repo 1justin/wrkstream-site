@@ -26,12 +26,14 @@ const products = [
     type: 'Shared active workspace',
     root: '/work/inmovement/treadmill',
     alt: 'InMovement convergent treadmill workstation',
+    premise: 'Walking meetings offered movement and conversation, but depended on weather, location, and access to information. We explored how that experience could move indoors, accommodate multiple people, and provide lightweight access to shared data while the conversation continued.',
   },
   {
     name: 'Mobile workstation',
     type: 'Flexible technology furniture',
     root: '/work/inmovement/workstation',
     alt: 'InMovement mobile workstation',
+    premise: 'Open offices and sit-to-stand desks changed how people worked, but the furniture remained surprisingly rigid. We designed a mobile workstation for teams that hotel, gather spontaneously, and reconfigure their environment around the work.',
   },
   {
     name: 'Move chair',
@@ -39,6 +41,7 @@ const products = [
     root: '/work/inmovement/stool',
     alt: 'InMovement active stool',
     final: '/work/inmovement/stool/product-clean.jpg',
+    premise: 'Some people think better when they can move. Move supported conventional seating at a high conference table, then rotated into a more active posture for quick huddles, presentations, and sharing a laptop or tablet.',
   },
 ];
 
@@ -95,8 +98,8 @@ export default function SketchToIPProject() {
       <div className={styles.label}>02 / The inventions</div>
       <div className={styles.galleryIntro}><h2>Concept. CAD. Patent.<br/><em>Product.</em></h2><p>The deepest innovation lived in the original product portfolio. The team built a showroom and innovation lab where ideas could be drawn, modeled, mocked up, tested, challenged, refined, and made real.</p></div>
       <div className={styles.productStories}>
-        {products.map((product,productIndex)=><article className={styles.productStory} key={product.name}>
-          <div className={styles.productTitle}><span>0{productIndex+1} / {product.type}</span><h3>{product.name}</h3></div>
+        {products.map((product,productIndex)=><article className={`${styles.productStory} ${refinements.productStoryGrid}`} key={product.name}>
+          <div className={styles.productTitle}><span>0{productIndex+1} / {product.type}</span><div className={refinements.productHeading}><h3>{product.name}</h3><p>{product.premise}</p></div></div>
           <figure className={styles.stage}><img src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
           <figure className={styles.stage}><img src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
           <figure className={styles.stage}><img src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>

@@ -14,7 +14,37 @@
   object-position: center 58% !important;
 }
 
+.productStoryGrid {
+  grid-template-columns: 1.1fr repeat(3, .7fr) 1.3fr;
+}
+
+.productHeading p {
+  max-width: 29ch;
+  margin: 18px 0 0;
+  color: #525862;
+  font: 500 13px/1.52 var(--font-geist-sans);
+}
+
+@media (max-width: 1000px) {
+  .productStoryGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .productHeading p {
+    max-width: 46ch;
+  }
+}
+
 @media (max-width: 560px) {
+  .productStoryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productHeading p {
+    max-width: 38ch;
+    font-size: 14px;
+  }
+
   .heroMainImage {
     aspect-ratio: 4 / 3 !important;
     object-position: 52% center;
