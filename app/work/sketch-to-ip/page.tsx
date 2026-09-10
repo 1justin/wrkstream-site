@@ -1,31 +1,26 @@
 import type { Metadata } from 'next';
 import styles from './project.module.css';
+import refinements from './refinements.module.css';
 
 export const metadata: Metadata = {
   title: 'From Sketch to IP | WRKSTREAM',
   description: 'InMovement products developed from early concepts through prototypes, patents, manufacturing, and market.',
   openGraph: {
     title: 'From Sketch to IP | WRKSTREAM',
-    description: 'A nine-month sprint from idea to shipment inside an immersive product-development system.',
-    images: [{ url: '/work/inmovement/treadmill/product.jpg', width: 2752, height: 1536, alt: 'InMovement convergent treadmill workstation' }],
+    description: 'A portfolio of original workplace products developed from first sketch through issued IP and market.',
+    images: [{ url: '/work/inmovement/workstation/product.jpg', width: 2752, height: 1536, alt: 'InMovement mobile workstation in use' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'From Sketch to IP | WRKSTREAM',
-    description: 'A nine-month sprint from idea to shipment inside an immersive product-development system.',
-    images: ['/work/inmovement/treadmill/product.jpg'],
+    description: 'A portfolio of original workplace products developed from first sketch through issued IP and market.',
+    images: ['/work/inmovement/workstation/product.jpg'],
   },
 };
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 const products = [
-  {
-    name: 'Move chair',
-    type: 'Active seating',
-    root: '/work/inmovement/stool',
-    alt: 'InMovement active stool',
-  },
   {
     name: 'Treadmill workstation',
     type: 'Shared active workspace',
@@ -38,18 +33,25 @@ const products = [
     root: '/work/inmovement/workstation',
     alt: 'InMovement mobile workstation',
   },
+  {
+    name: 'Move chair',
+    type: 'Active seating',
+    root: '/work/inmovement/stool',
+    alt: 'InMovement active stool',
+    final: '/work/inmovement/stool/product-clean.jpg',
+  },
 ];
 
 const patents = [
-  ['US 9,737,138 B1', 'Converging treadmill workstation', true],
-  ['US 9,918,550 B1', 'Mobile workstation', true],
-  ['US 10,016,652 B1', 'Converging treadmill workstation', true],
-  ['US 10,045,611 B1', 'Table apparatuses', false],
-  ['US D769,381 S', 'Convergent treadmill desk', true],
-  ['US D769,989 S', 'Convergent treadmill desk', true],
-  ['US D817,651 S', 'Stool', false],
-  ['US D805,065 S', 'Mobile workstation', true],
-  ['US D770,576 S', 'Convergent treadmill desk', true],
+  ['US 9,737,138 B1', 'Converging treadmill workstation', 'Utility', true],
+  ['US 9,918,550 B1', 'Mobile workstation', 'Utility', true],
+  ['US 10,016,652 B1', 'Converging treadmill workstation', 'Utility', true],
+  ['US 10,045,611 B1', 'Table apparatuses', 'Utility', false],
+  ['US D769,381 S', 'Convergent treadmill desk', 'Design', true],
+  ['US D769,989 S', 'Convergent treadmill desk', 'Design', true],
+  ['US D817,651 S', 'Stool', 'Design', false],
+  ['US D805,065 S', 'Mobile workstation', 'Design', true],
+  ['US D770,576 S', 'Convergent treadmill desk', 'Design', true],
 ];
 
 export default function SketchToIPProject() {
@@ -63,17 +65,17 @@ export default function SketchToIPProject() {
     <header className={styles.hero}>
       <div className={styles.meta}><span>Product / Hardware / Industrial design / IP</span><span>Case 05</span></div>
       <div className={styles.heroGrid}>
-        <div><p className={styles.kicker}>InMovement</p><h1>From sketch<br/>to <em>shipping.</em></h1></div>
-        <div className={styles.intro}><p>A startup inside Life Fitness built an immersive product-development system that moved ideas through prototypes, patents, global manufacturing, and market.</p></div>
+        <div><p className={styles.kicker}>InMovement</p><h1>From first sketch<br/>to <em>issued IP.</em></h1></div>
+        <div className={styles.intro}><p>A startup inside Life Fitness built original workplace products and the system required to move them through prototypes, patents, global manufacturing, and market.</p></div>
       </div>
       <div className={styles.heroVisual}>
-        <img src="/work/inmovement/treadmill/product.jpg" alt="InMovement convergent treadmill workstation in an office"/>
-        <div className={styles.heroMark}><img src="/work/inmovement/logo.webp" alt="InMovement"/><span>Product development / 2014–2019</span></div>
+        <img className={refinements.heroMainImage} src="/work/inmovement/workstation/product.jpg" alt="A person using the InMovement mobile workstation"/>
+        <div className={styles.heroMark}><img className={refinements.logoImage} src="/work/inmovement/logo.webp" alt="InMovement"/><span>Product development / 2014–2019</span></div>
       </div>
       <div className={styles.metrics}>
+        <div><b>3</b><span>Utility patents naming Justin</span></div>
+        <div><b>4</b><span>Design patents naming Justin</span></div>
         <div><b>9 mo.</b><span>DT2 idea to shipment</span></div>
-        <div><b>9</b><span>US patents across the portfolio</span></div>
-        <div><b>7</b><span>Patents naming Justin as inventor</span></div>
         <div><b>3</b><span>Product systems shown here</span></div>
       </div>
     </header>
@@ -89,33 +91,33 @@ export default function SketchToIPProject() {
       </div>
     </section>
 
-    <section className={styles.speed}>
-      <div className={styles.label}>02 / Speed as a capability</div>
-      <div className={styles.speedGrid}>
-        <div><p className={styles.kicker}>DT2 desktop workstation</p><h2>Idea to shipment.<br/><em>Nine months.</em></h2><p>The desktop riser was a fast-follower product. The innovation was the operating cadence: identify the opportunity, define the experience, develop the mechanism, source the product, and get it into customers’ hands in nine months.</p></div>
-        <figure><img src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
-      </div>
-    </section>
-
     <section className={styles.gallerySection}>
-      <div className={styles.label}>03 / The development process</div>
-      <div className={styles.galleryIntro}><h2>Concept. CAD. Patent.<br/><em>Product.</em></h2><p>The team built a showroom and innovation lab where ideas could be drawn, modeled, mocked up, tested, challenged, refined, and made real. The process stayed tangible from the first line to the finished object.</p></div>
+      <div className={styles.label}>02 / The inventions</div>
+      <div className={styles.galleryIntro}><h2>Concept. CAD. Patent.<br/><em>Product.</em></h2><p>The deepest innovation lived in the original product portfolio. The team built a showroom and innovation lab where ideas could be drawn, modeled, mocked up, tested, challenged, refined, and made real.</p></div>
       <div className={styles.productStories}>
         {products.map((product,productIndex)=><article className={styles.productStory} key={product.name}>
           <div className={styles.productTitle}><span>0{productIndex+1} / {product.type}</span><h3>{product.name}</h3></div>
           <figure className={styles.stage}><img src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
           <figure className={styles.stage}><img src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
           <figure className={styles.stage}><img src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>
-          <figure className={`${styles.stage} ${styles.finalStage}`}><img src={`${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
+          <figure className={`${styles.stage} ${styles.finalStage}`}><img className={product.final ? refinements.moveFinalImage : undefined} src={product.final ?? `${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
         </article>)}
       </div>
     </section>
 
     <section className={styles.ipSection}>
-      <div className={styles.label}>04 / The IP</div>
-      <div className={styles.ipIntro}><h2>The portfolio created <em>defensible invention.</em></h2><p>Nine issued US utility and design patents document the breadth of the product effort. Justin is named as an inventor on seven. The other two reflect adjacent team invention within the same portfolio.</p></div>
+      <div className={styles.label}>03 / The IP</div>
+      <div className={styles.ipIntro}><h2>The portfolio created <em>defensible invention.</em></h2><p>Nine issued US patents document the breadth of the product effort. Justin is named on three utility patents and four design patents. The other two reflect adjacent team invention within the same portfolio.</p></div>
       <div className={styles.patentList}>
-        {patents.map(([number,title,named],i)=><div key={number as string}><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{named ? 'Justin named as inventor' : 'Portfolio team patent'}</small></div>)}
+        {patents.map(([number,title,kind,named],i)=><div key={number as string}><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{kind as string} / {named ? 'Justin named' : 'Portfolio team'}</small></div>)}
+      </div>
+    </section>
+
+    <section className={styles.speed}>
+      <div className={styles.label}>04 / Speed as a capability</div>
+      <div className={styles.speedGrid}>
+        <div><p className={styles.kicker}>DT2 desktop workstation</p><h2>Idea to shipment.<br/><em>Nine months.</em></h2><p>DT2 was the fast-follower story in the portfolio. Its value was execution speed: identify the opportunity, define the experience, develop the mechanism, source the product, and get it into customers’ hands in nine months.</p></div>
+        <figure><img src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
       </div>
     </section>
 
@@ -135,8 +137,8 @@ export default function SketchToIPProject() {
     <section className={styles.result}>
       <div className={styles.label}>06 / The honest result</div>
       <div className={styles.resultGrid}>
-        <h2>The products moved fast.<br/>The strategy lost focus.</h2>
-        <div><p>InMovement did not become the financial success its product output suggested. The organization pursued B2B and B2C simultaneously while navigating layered priorities across a startup, Life Fitness, and Brunswick.</p><p>The durable wins are still substantial: a product shipped in nine months, nine issued patents across the portfolio, seven naming Justin as an inventor, new manufacturing relationships in China, a new commercial-furniture channel, and a repeatable system for turning ambiguity into physical products.</p></div>
+        <h2>Product capability outpaced distribution commitment.</h2>
+        <div><p>InMovement pursued B2B and B2C at the same time, without the sustained distribution investment required to make both work. Life Fitness and Brunswick ultimately chose not to keep funding that path. The portfolio was acquired and continued as a smaller independent business.</p><p>The durable wins are substantial: original products taken from sketches to market, three utility and four design patents naming Justin, a fast-follower product shipped in nine months, new manufacturing relationships in China, a commercial-furniture channel, and a repeatable system for turning ambiguity into physical products.</p></div>
       </div>
     </section>
 

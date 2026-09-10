@@ -1,0 +1,32 @@
+.heroMainImage {
+  object-position: center;
+}
+
+.logoImage {
+  width: 220px !important;
+  height: 48px !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.moveFinalImage {
+  object-position: center 58% !important;
+}
+
+@media (max-width: 560px) {
+  .heroMainImage {
+    aspect-ratio: 4 / 3 !important;
+    object-position: 52% center;
+  }
+
+  .logoImage {
+    width: 170px !important;
+    height: 38px !important;
+  }
+
+  .moveFinalImage {
+    object-fit: contain !important;
+    background: #b8aa9c;
+  }
+}
