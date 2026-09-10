@@ -175,3 +175,28 @@ footer#contact h2 em {
   color: #fff;
   border-bottom-color: #ffffff88;
 }
+
+/* Outbound proof links. Someone arriving from a cold email wants to confirm
+   the person is real before they book, so these sit with the contact CTAs
+   rather than in the fine print. */
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 34px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font: 10px var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #8b8a83;
+  transition: color .25s;
+}
+
+.footer-social a:hover {
+  color: var(--acid);
+}

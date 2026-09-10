@@ -24,7 +24,7 @@ export default function HarborIQProject() {
       <div className={styles.meta}><span>Venture / Insurance / AI</span><span>Case 01</span></div>
       <div className={styles.heroGrid}>
         <div><p className={styles.kicker}>Operating venture</p><h1>Harbor<span>IQ</span></h1></div>
-        <p className={styles.statement}>An AI-native operating platform for independent insurance agencies.</p>
+        <div><p className={styles.statement}>An AI-native operating platform for independent insurance agencies.</p><a className={styles.heroLink} href="https://www.linkedin.com/company/harboriqsoftware/" target="_blank" rel="noopener noreferrer">HarborIQ on LinkedIn <Arrow /></a></div>
       </div>
       <div className={styles.productFrame}><img style={{display:'block',width:'100%',height:'auto'}} src="/work/harboriq-dashboard.jpg" alt="HarborIQ agency command center showing pipeline, renewals, tasks, and AI-assisted actions"/></div>
       <p className={styles.caption}>HarborIQ / Agency command center</p>

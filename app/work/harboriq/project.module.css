@@ -5,3 +5,8 @@
 .footer>a.altCta{background:transparent;color:var(--ink);border:1px solid #c3cbd7;margin-left:12px}
 .footer>a.altCta:hover{border-color:var(--ink)}
 @media(max-width:520px){.footer>a{margin-bottom:0}.footer>a.altCta{margin-left:0;margin-top:12px;margin-bottom:100px}}
+
+
+/* Outbound proof link in the hero, matching the Sertler case study treatment. */
+.heroLink{display:inline-block;margin-top:30px;border-bottom:2px solid var(--blue);padding-bottom:7px;font:700 12px/1 var(--font-mono);text-transform:uppercase;letter-spacing:.08em}
+.heroLink:hover{border-bottom-color:var(--ink)}

@@ -48,15 +48,15 @@ const products = [
 ];
 
 const patents = [
-  ['US 9,737,138 B1', 'Converging treadmill workstation', 'Utility', true],
-  ['US 9,918,550 B1', 'Mobile workstation', 'Utility', true],
-  ['US 10,016,652 B1', 'Converging treadmill workstation', 'Utility', true],
-  ['US 10,045,611 B1', 'Table apparatuses', 'Utility', false],
-  ['US D769,381 S', 'Convergent treadmill desk', 'Design', true],
-  ['US D769,989 S', 'Convergent treadmill desk', 'Design', true],
-  ['US D817,651 S', 'Stool', 'Design', false],
-  ['US D805,065 S', 'Mobile workstation', 'Design', true],
-  ['US D770,576 S', 'Convergent treadmill desk', 'Design', true],
+  ['US 9,737,138 B1', 'Converging treadmill workstation', 'Utility', true, 'US9737138B1'],
+  ['US 9,918,550 B1', 'Mobile workstation', 'Utility', true, 'US9918550B1'],
+  ['US 10,016,652 B1', 'Converging treadmill workstation', 'Utility', true, 'US10016652B1'],
+  ['US 10,045,611 B1', 'Table apparatuses', 'Utility', false, 'US10045611B1'],
+  ['US D769,381 S', 'Convergent treadmill desk', 'Design', true, 'USD769381S1'],
+  ['US D769,989 S', 'Convergent treadmill desk', 'Design', true, 'USD769989S1'],
+  ['US D817,651 S', 'Stool', 'Design', false, 'USD817651S1'],
+  ['US D805,065 S', 'Mobile workstation', 'Design', true, 'USD805065S1'],
+  ['US D770,576 S', 'Convergent treadmill desk', 'Design', true, 'USD770576S1'],
 ];
 
 export default function SketchToIPProject() {
@@ -114,7 +114,7 @@ export default function SketchToIPProject() {
       <div className={styles.label}>03 / The IP</div>
       <div className={styles.ipIntro}><h2>The portfolio created <em>defensible invention.</em></h2><p>Nine issued US patents document the breadth of the product effort. Justin is named on three utility patents and four design patents. The other two reflect adjacent team invention within the same portfolio.</p></div>
       <div className={styles.patentList}>
-        {patents.map(([number,title,kind,named],i)=><div key={number as string}><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{kind as string} / {named ? 'Justin named' : 'Portfolio team'}</small></div>)}
+        {patents.map(([number,title,kind,named,id],i)=><a key={number as string} href={`https://patents.google.com/patent/${id as string}/en`} target="_blank" rel="noopener noreferrer"><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{kind as string} / {named ? 'Justin named' : 'Portfolio team'} <Arrow /></small></a>)}
       </div>
     </section>
 
