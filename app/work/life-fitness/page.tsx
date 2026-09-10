@@ -18,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const BOOK = 'https://tidycal.com/cjmayer/15-minute-intro';
+const bookProps = { href: BOOK, target: '_blank', rel: 'noopener noreferrer' };
 
 const portfolio = [
   {
@@ -42,7 +44,7 @@ export default function LifeFitnessProject() {
     <nav className={styles.nav}>
       <a className={styles.wordmark} href="/"><span>WRK</span>STREAM</a>
       <a className={styles.back} href="/#work">← Selected work</a>
-      <a className={styles.navCta} href="mailto:hello@wrkstream.com?subject=Build%20a%20product">Start a project <Arrow /></a>
+      <a className={styles.navCta} {...bookProps}>Book an intro call <Arrow /></a>
     </nav>
 
     <header className={styles.hero}>
@@ -109,7 +111,7 @@ export default function LifeFitnessProject() {
     <footer className={styles.footer}>
       <p className={styles.kicker}>Building a product with real-world complexity?</p>
       <h2>Let’s get it<br/><span>moving.</span></h2>
-      <a href="mailto:hello@wrkstream.com?subject=Build%20a%20product">Start a project <Arrow /></a>
+      <a {...bookProps}>Book a 15-minute intro <Arrow /></a><a className={styles.altCta} href="mailto:justin@wrkstream.com?subject=Build%20a%20product">Or email justin@wrkstream.com <Arrow /></a>
       <div><b><span>WRK</span>STREAM</b><small>Product + venture studio / Chicago</small></div>
     </footer>
   </main>;

@@ -11,7 +11,7 @@
 .discipline h2 em,
 .advisory h2 em,
 .small h2 em,
-footer h2 em {
+footer#contact h2 em {
   color: var(--blue);
 }
 
@@ -153,4 +153,25 @@ footer h2 em {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Booking is the primary path; email stays available for people who prefer it.
+   A block-level flex box forces the alt link onto its own line while
+   width:fit-content keeps its underline tight to the text. */
+.footer-cta-alt {
+  display: flex;
+  width: fit-content;
+  gap: 14px;
+  align-items: center;
+  margin-top: 26px;
+  font-size: 14px;
+  color: #aeada6;
+  border-bottom: 1px solid #ffffff33;
+  padding-bottom: 8px;
+  transition: color .25s, border-color .25s;
+}
+
+.footer-cta-alt:hover {
+  color: #fff;
+  border-bottom-color: #ffffff88;
 }
