@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'WRKSTREAM — Product + Venture Studio',
     description: 'We build businesses. Sometimes they’re ours. Sometimes they’re yours.',
-    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'WRKSTREAM — We build businesses.' }],
+    images: [{ url: '/og.jpg', width: 1731, height: 909, alt: 'WRKSTREAM — We build businesses.' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'WRKSTREAM — Product + Venture Studio',
     description: 'We build businesses. Sometimes they’re ours. Sometimes they’re yours.',
-    images: ['/og.png'],
+    images: ['/og.jpg'],
   },
 };
 

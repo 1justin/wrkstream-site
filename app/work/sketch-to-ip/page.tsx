@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 };
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const BOOK = 'https://tidycal.com/cjmayer/15-minute-intro';
+const bookProps = { href: BOOK, target: '_blank', rel: 'noopener noreferrer' };
 
 const products = [
   {
@@ -46,15 +48,15 @@ const products = [
 ];
 
 const patents = [
-  ['US 9,737,138 B1', 'Converging treadmill workstation', 'Utility', true],
-  ['US 9,918,550 B1', 'Mobile workstation', 'Utility', true],
-  ['US 10,016,652 B1', 'Converging treadmill workstation', 'Utility', true],
-  ['US 10,045,611 B1', 'Table apparatuses', 'Utility', false],
-  ['US D769,381 S', 'Convergent treadmill desk', 'Design', true],
-  ['US D769,989 S', 'Convergent treadmill desk', 'Design', true],
-  ['US D817,651 S', 'Stool', 'Design', false],
-  ['US D805,065 S', 'Mobile workstation', 'Design', true],
-  ['US D770,576 S', 'Convergent treadmill desk', 'Design', true],
+  ['US 9,737,138 B1', 'Converging treadmill workstation', 'Utility', true, 'US9737138B1'],
+  ['US 9,918,550 B1', 'Mobile workstation', 'Utility', true, 'US9918550B1'],
+  ['US 10,016,652 B1', 'Converging treadmill workstation', 'Utility', true, 'US10016652B1'],
+  ['US 10,045,611 B1', 'Table apparatuses', 'Utility', false, 'US10045611B1'],
+  ['US D769,381 S', 'Convergent treadmill desk', 'Design', true, 'USD769381S1'],
+  ['US D769,989 S', 'Convergent treadmill desk', 'Design', true, 'USD769989S1'],
+  ['US D817,651 S', 'Stool', 'Design', false, 'USD817651S1'],
+  ['US D805,065 S', 'Mobile workstation', 'Design', true, 'USD805065S1'],
+  ['US D770,576 S', 'Convergent treadmill desk', 'Design', true, 'USD770576S1'],
 ];
 
 export default function SketchToIPProject() {
@@ -62,7 +64,7 @@ export default function SketchToIPProject() {
     <nav className={styles.nav}>
       <a className={styles.wordmark} href="/"><span>WRK</span>STREAM</a>
       <a className={styles.back} href="/#work">← Selected work</a>
-      <a className={styles.navCta} href="mailto:hello@wrkstream.com?subject=Build%20a%20physical%20product">Start a project <Arrow /></a>
+      <a className={styles.navCta} {...bookProps}>Book an intro call <Arrow /></a>
     </nav>
 
     <header className={styles.hero}>
@@ -72,7 +74,7 @@ export default function SketchToIPProject() {
         <div className={styles.intro}><p>A startup inside Life Fitness built original workplace products and the system required to move them through prototypes, patents, global manufacturing, and market.</p></div>
       </div>
       <div className={styles.heroVisual}>
-        <img className={refinements.heroMainImage} src="/work/inmovement/workstation/product.jpg" alt="A person using the InMovement mobile workstation"/>
+        <img fetchPriority="high" className={refinements.heroMainImage} src="/work/inmovement/workstation/product.jpg" alt="A person using the InMovement mobile workstation"/>
         <div className={styles.heroMark}><img className={refinements.logoImage} src="/work/inmovement/logo.webp" alt="InMovement"/><span>Product development / 2014–2019</span></div>
       </div>
       <div className={styles.metrics}>
@@ -100,10 +102,10 @@ export default function SketchToIPProject() {
       <div className={styles.productStories}>
         {products.map((product,productIndex)=><article className={`${styles.productStory} ${refinements.productStoryGrid}`} key={product.name}>
           <div className={styles.productTitle}><span>0{productIndex+1} / {product.type}</span><div className={refinements.productHeading}><h3>{product.name}</h3><p>{product.premise}</p></div></div>
-          <figure className={styles.stage}><img src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
-          <figure className={styles.stage}><img src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
-          <figure className={styles.stage}><img src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>
-          <figure className={`${styles.stage} ${styles.finalStage}`}><img className={product.final ? refinements.moveFinalImage : undefined} src={product.final ?? `${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>
+          <figure className={`${styles.stage} ${styles.finalStage}`}><img loading="lazy" decoding="async" className={product.final ? refinements.moveFinalImage : undefined} src={product.final ?? `${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
         </article>)}
       </div>
     </section>
@@ -112,7 +114,7 @@ export default function SketchToIPProject() {
       <div className={styles.label}>03 / The IP</div>
       <div className={styles.ipIntro}><h2>The portfolio created <em>defensible invention.</em></h2><p>Nine issued US patents document the breadth of the product effort. Justin is named on three utility patents and four design patents. The other two reflect adjacent team invention within the same portfolio.</p></div>
       <div className={styles.patentList}>
-        {patents.map(([number,title,kind,named],i)=><div key={number as string}><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{kind as string} / {named ? 'Justin named' : 'Portfolio team'}</small></div>)}
+        {patents.map(([number,title,kind,named,id],i)=><a key={number as string} href={`https://patents.google.com/patent/${id as string}/en`} target="_blank" rel="noopener noreferrer"><span>0{i+1}</span><b>{number as string}</b><p>{title as string}</p><small>{kind as string} / {named ? 'Justin named' : 'Portfolio team'} <Arrow /></small></a>)}
       </div>
     </section>
 
@@ -120,7 +122,7 @@ export default function SketchToIPProject() {
       <div className={styles.label}>04 / Speed as a capability</div>
       <div className={styles.speedGrid}>
         <div><p className={styles.kicker}>DT2 desktop workstation</p><h2>Idea to shipment.<br/><em>Nine months.</em></h2><p>DT2 was the fast-follower story in the portfolio. Its value was execution speed: identify the opportunity, define the experience, develop the mechanism, source the product, and get it into customers’ hands in nine months.</p></div>
-        <figure><img src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
       </div>
     </section>
 
@@ -148,7 +150,7 @@ export default function SketchToIPProject() {
     <footer className={styles.footer}>
       <p className={styles.kicker}>Have something worth making real?</p>
       <h2>Let’s move it from sketch to <span>shipping.</span></h2>
-      <a href="mailto:hello@wrkstream.com?subject=Build%20a%20physical%20product">Start a project <Arrow /></a>
+      <a {...bookProps}>Book a 15-minute intro <Arrow /></a><a className={styles.altCta} href="mailto:justin@wrkstream.com?subject=Build%20a%20physical%20product">Or email justin@wrkstream.com <Arrow /></a>
       <div><b><span>WRK</span>STREAM</b><small>Product + venture studio / Chicago</small></div>
     </footer>
   </main>;

@@ -18,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const BOOK = 'https://tidycal.com/cjmayer/15-minute-intro';
+const bookProps = { href: BOOK, target: '_blank', rel: 'noopener noreferrer' };
 
 const contributions = [
   ['01', 'Pressure-test the diagnosis', 'Validate the patterns emerging across functions and separate individual productivity wins from enterprise capability.'],
@@ -45,7 +47,7 @@ export default function EnterpriseAIAdvisoryProject() {
     <nav className={styles.nav}>
       <a className={styles.wordmark} href="/"><span>WRK</span>STREAM</a>
       <a className={styles.back} href="/#work">← Selected work</a>
-      <a className={styles.navCta} href="mailto:hello@wrkstream.com?subject=Enterprise%20AI%20advisory">Start a conversation <Arrow /></a>
+      <a className={styles.navCta} {...bookProps}>Book an intro call <Arrow /></a>
     </nav>
 
     <header className={styles.hero}>
@@ -56,7 +58,7 @@ export default function EnterpriseAIAdvisoryProject() {
       </div>
 
       <div className={styles.film}>
-        <img src="/work/ai-working-session.jpg" alt="Collaborative AI strategy working session"/>
+        <img fetchPriority="high" src="/work/ai-working-session.jpg" alt="Collaborative AI strategy working session"/>
         <div className={styles.filmMark}><span>AI</span><small>Advisory / Strategy / 2025</small></div>
       </div>
       <p className={styles.caption}>Representative working-session visual</p>
@@ -129,7 +131,7 @@ export default function EnterpriseAIAdvisoryProject() {
     <footer className={styles.footer}>
       <p className={styles.kicker}>Leading something bigger?</p>
       <h2>Turn AI interest into an <span>operating plan.</span></h2>
-      <a href="mailto:hello@wrkstream.com?subject=Enterprise%20AI%20advisory">Start a conversation <Arrow /></a>
+      <a {...bookProps}>Book a 15-minute intro <Arrow /></a><a className={styles.altCta} href="mailto:justin@wrkstream.com?subject=Enterprise%20AI%20advisory">Or email justin@wrkstream.com <Arrow /></a>
       <div><b><span>WRK</span>STREAM</b><small>Product + venture studio / Chicago</small></div>
     </footer>
   </main>;

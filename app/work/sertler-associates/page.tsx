@@ -9,13 +9,15 @@ export const metadata: Metadata = {
 };
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const BOOK = 'https://tidycal.com/cjmayer/15-minute-intro';
+const bookProps = { href: BOOK, target: '_blank', rel: 'noopener noreferrer' };
 
 export default function SertlerProject() {
   return <main className={styles.page}>
     <nav className={styles.nav}>
       <a className={styles.wordmark} href="/"><span>WRK</span>STREAM</a>
       <a className={styles.back} href="/#work">← Selected work</a>
-      <a className={styles.navCta} href="mailto:hello@wrkstream.com?subject=Start%20a%20project">Start a project <Arrow /></a>
+      <a className={styles.navCta} {...bookProps}>Book an intro call <Arrow /></a>
     </nav>
 
     <header className={styles.hero}>
@@ -25,7 +27,7 @@ export default function SertlerProject() {
         <div className={styles.intro}><p>A modern, multilingual digital presence connected directly to the operating system behind the agency.</p><a href="https://www.sdabrokers.com/" target="_blank" rel="noreferrer">View the live site <Arrow /></a></div>
       </div>
 
-      <div className={styles.browser}><img style={{display:'block',width:'100%',height:'auto'}} src="/work/sertler-website.jpg" alt="Sertler & Associates multilingual insurance website displayed on a laptop"/></div>
+      <div className={styles.browser}><img fetchPriority="high" style={{display:'block',width:'100%',height:'auto'}} src="/work/sertler-website.jpg" alt="Sertler & Associates multilingual insurance website displayed on a laptop"/></div>
       <p className={styles.caption}>Sertler &amp; Associates / Live digital experience</p>
     </header>
 
@@ -63,7 +65,7 @@ export default function SertlerProject() {
 
     <footer className={styles.footer}>
       <p className={styles.kicker}>Need more than a new website?</p><h2>Let’s connect the <span>business.</span></h2>
-      <a href="mailto:hello@wrkstream.com?subject=Modernize%20my%20business">Start a project <Arrow /></a>
+      <a {...bookProps}>Book a 15-minute intro <Arrow /></a><a className={styles.altCta} href="mailto:justin@wrkstream.com?subject=Modernize%20my%20business">Or email justin@wrkstream.com <Arrow /></a>
       <div><b><span>WRK</span>STREAM</b><small>Product + venture studio / Chicago</small></div>
     </footer>
   </main>;

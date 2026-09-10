@@ -11,7 +11,7 @@
 .discipline h2 em,
 .advisory h2 em,
 .small h2 em,
-footer h2 em {
+footer#contact h2 em {
   color: var(--blue);
 }
 
@@ -153,4 +153,78 @@ footer h2 em {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Booking is the primary path; email stays available for people who prefer it.
+   A block-level flex box forces the alt link onto its own line while
+   width:fit-content keeps its underline tight to the text. */
+.footer-cta-alt {
+  display: flex;
+  width: fit-content;
+  gap: 14px;
+  align-items: center;
+  margin-top: 26px;
+  font-size: 14px;
+  color: #aeada6;
+  border-bottom: 1px solid #ffffff33;
+  padding-bottom: 8px;
+  transition: color .25s, border-color .25s;
+}
+
+.footer-cta-alt:hover {
+  color: #fff;
+  border-bottom-color: #ffffff88;
+}
+
+/* Outbound proof links. Someone arriving from a cold email wants to confirm
+   the person is real before they book, so these sit with the contact CTAs
+   rather than in the fine print. */
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 34px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font: 10px var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #8b8a83;
+  transition: color .25s;
+}
+
+.footer-social a:hover {
+  color: var(--acid);
+}
+
+/* Mobile navigation. The links were hidden below 800px, which left the case
+   studies — the proof a cold-email visitor came to check — reachable only by
+   scrolling the whole page. Wrap them onto a second row instead of dropping
+   them, keeping the wordmark and booking CTA on the first. */
+@media (max-width: 800px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    height: auto;
+    padding: 16px 0 13px;
+    row-gap: 13px;
+  }
+
+  /* Auto-placement would push the CTA onto a third row once .nav-links spans
+     the full width, so pin all three explicitly: wordmark and CTA share row 1,
+     links take row 2. */
+  .nav .wordmark { grid-row: 1; grid-column: 1; }
+  .nav .nav-cta  { grid-row: 1; grid-column: 2; }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    grid-row: 2;
+    grid-column: 1 / -1;
+    gap: 8px 20px;
+    font-size: 12px;
+  }
 }
