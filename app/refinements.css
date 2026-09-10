@@ -200,3 +200,31 @@ footer#contact h2 em {
 .footer-social a:hover {
   color: var(--acid);
 }
+
+/* Mobile navigation. The links were hidden below 800px, which left the case
+   studies — the proof a cold-email visitor came to check — reachable only by
+   scrolling the whole page. Wrap them onto a second row instead of dropping
+   them, keeping the wordmark and booking CTA on the first. */
+@media (max-width: 800px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    height: auto;
+    padding: 16px 0 13px;
+    row-gap: 13px;
+  }
+
+  /* Auto-placement would push the CTA onto a third row once .nav-links spans
+     the full width, so pin all three explicitly: wordmark and CTA share row 1,
+     links take row 2. */
+  .nav .wordmark { grid-row: 1; grid-column: 1; }
+  .nav .nav-cta  { grid-row: 1; grid-column: 2; }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    grid-row: 2;
+    grid-column: 1 / -1;
+    gap: 8px 20px;
+    font-size: 12px;
+  }
+}

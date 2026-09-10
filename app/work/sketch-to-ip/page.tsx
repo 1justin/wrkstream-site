@@ -74,7 +74,7 @@ export default function SketchToIPProject() {
         <div className={styles.intro}><p>A startup inside Life Fitness built original workplace products and the system required to move them through prototypes, patents, global manufacturing, and market.</p></div>
       </div>
       <div className={styles.heroVisual}>
-        <img className={refinements.heroMainImage} src="/work/inmovement/workstation/product.jpg" alt="A person using the InMovement mobile workstation"/>
+        <img fetchPriority="high" className={refinements.heroMainImage} src="/work/inmovement/workstation/product.jpg" alt="A person using the InMovement mobile workstation"/>
         <div className={styles.heroMark}><img className={refinements.logoImage} src="/work/inmovement/logo.webp" alt="InMovement"/><span>Product development / 2014–2019</span></div>
       </div>
       <div className={styles.metrics}>
@@ -102,10 +102,10 @@ export default function SketchToIPProject() {
       <div className={styles.productStories}>
         {products.map((product,productIndex)=><article className={`${styles.productStory} ${refinements.productStoryGrid}`} key={product.name}>
           <div className={styles.productTitle}><span>0{productIndex+1} / {product.type}</span><div className={refinements.productHeading}><h3>{product.name}</h3><p>{product.premise}</p></div></div>
-          <figure className={styles.stage}><img src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
-          <figure className={styles.stage}><img src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
-          <figure className={styles.stage}><img src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>
-          <figure className={`${styles.stage} ${styles.finalStage}`}><img className={product.final ? refinements.moveFinalImage : undefined} src={product.final ?? `${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/concept.png`} alt={`${product.alt} concept drawing`}/><figcaption>01 / Concept</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/cad.png`} alt={`${product.alt} CAD development`}/><figcaption>02 / CAD</figcaption></figure>
+          <figure className={styles.stage}><img loading="lazy" decoding="async" src={`${product.root}/patent.png`} alt={`${product.alt} patent drawing`}/><figcaption>03 / Patent</figcaption></figure>
+          <figure className={`${styles.stage} ${styles.finalStage}`}><img loading="lazy" decoding="async" className={product.final ? refinements.moveFinalImage : undefined} src={product.final ?? `${product.root}/product.jpg`} alt={`${product.alt} commercialized product`}/><figcaption>04 / Product</figcaption></figure>
         </article>)}
       </div>
     </section>
@@ -122,7 +122,7 @@ export default function SketchToIPProject() {
       <div className={styles.label}>04 / Speed as a capability</div>
       <div className={styles.speedGrid}>
         <div><p className={styles.kicker}>DT2 desktop workstation</p><h2>Idea to shipment.<br/><em>Nine months.</em></h2><p>DT2 was the fast-follower story in the portfolio. Its value was execution speed: identify the opportunity, define the experience, develop the mechanism, source the product, and get it into customers’ hands in nine months.</p></div>
-        <figure><img src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="/work/inmovement/dt20-standing-desk.webp" alt="InMovement desktop sit-to-stand workstation"/><figcaption>Desktop sit-to-stand workstation / Commercialized product</figcaption></figure>
       </div>
     </section>
 

@@ -55,7 +55,7 @@ export default function LifeFitnessProject() {
       </div>
 
       <div className={styles.film}>
-        <img src="/work/life-fitness-treadmill-poster.jpg" alt="Life Fitness treadmill shown in motion"/>
+        <img fetchPriority="high" src="/work/life-fitness-treadmill-poster.jpg" alt="Life Fitness treadmill shown in motion"/>
         <div className={styles.filmMark}><span>LF</span><small>Product / Portfolio / 2014–2019</small></div>
       </div>
       <p className={styles.caption}>Life Fitness / Connected cardio product experience</p>

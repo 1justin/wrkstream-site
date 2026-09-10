@@ -27,7 +27,7 @@ export default function SertlerProject() {
         <div className={styles.intro}><p>A modern, multilingual digital presence connected directly to the operating system behind the agency.</p><a href="https://www.sdabrokers.com/" target="_blank" rel="noreferrer">View the live site <Arrow /></a></div>
       </div>
 
-      <div className={styles.browser}><img style={{display:'block',width:'100%',height:'auto'}} src="/work/sertler-website.jpg" alt="Sertler & Associates multilingual insurance website displayed on a laptop"/></div>
+      <div className={styles.browser}><img fetchPriority="high" style={{display:'block',width:'100%',height:'auto'}} src="/work/sertler-website.jpg" alt="Sertler & Associates multilingual insurance website displayed on a laptop"/></div>
       <p className={styles.caption}>Sertler &amp; Associates / Live digital experience</p>
     </header>
 

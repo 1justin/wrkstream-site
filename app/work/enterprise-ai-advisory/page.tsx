@@ -58,7 +58,7 @@ export default function EnterpriseAIAdvisoryProject() {
       </div>
 
       <div className={styles.film}>
-        <img src="/work/ai-working-session.jpg" alt="Collaborative AI strategy working session"/>
+        <img fetchPriority="high" src="/work/ai-working-session.jpg" alt="Collaborative AI strategy working session"/>
         <div className={styles.filmMark}><span>AI</span><small>Advisory / Strategy / 2025</small></div>
       </div>
       <p className={styles.caption}>Representative working-session visual</p>
