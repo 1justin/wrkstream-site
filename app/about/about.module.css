@@ -85,8 +85,7 @@
 .textLink:hover { border-bottom-color: var(--paper); }
 .heroImage { margin: 0; border: 1px solid var(--line); background: #181a1f; overflow: hidden; }
 .portraitFrame { display: grid; grid-template-columns: minmax(0, 1fr) 68px; background: var(--blue); }
-/* A portrait crop: the source is near-square, so keep the face off the top edge. */
-.heroImage img { aspect-ratio: 1.24; height: 100%; object-fit: cover; object-position: center 22%; }
+.heroImage img { aspect-ratio: 1.45; height: 100%; object-fit: cover; object-position: center 38%; filter: saturate(.92) contrast(1.03); }
 .portraitNote {
   padding: 15px 0;
   display: flex;

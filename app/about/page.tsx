@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Justin Mayer | WRKSTREAM',
     description: 'I build my way to better answers.',
-    images: [{ url: '/about/justin-mayer.jpg', width: 1153, height: 1081, alt: 'Justin Mayer' }],
+    images: [{ url: '/about/justin-mayer-product-lab.jpg', width: 1536, height: 1024, alt: 'Justin Mayer in his product lab' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Justin Mayer | WRKSTREAM',
     description: 'I build my way to better answers.',
-    images: ['/about/justin-mayer.jpg'],
+    images: ['/about/justin-mayer-product-lab.jpg'],
   },
 };
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
         </div>
         <figure className={styles.heroImage}>
           <div className={styles.portraitFrame}>
-            <img fetchPriority="high" src="/about/justin-mayer.jpg" alt="Justin Mayer"/>
+            <img fetchPriority="high" src="/about/justin-mayer-product-lab.jpg" alt="Justin Mayer in his product lab"/>
             <div className={styles.portraitNote} aria-hidden="true"><span>MECH ENG</span><b>→</b><span>PRODUCT</span><b>→</b><span>FOUNDER</span></div>
           </div>
           <figcaption><span>Justin Mayer / WRKSTREAM</span><span>Builder since before AI was a button</span></figcaption>
